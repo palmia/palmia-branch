@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>職員詳細 - サンコミ</title>
+
+<style>
+body {
+    font-family: "Segoe UI", sans-serif;
+    background-color: #111;
+    color: #eee;
+    margin: 0;
+}
+
+/* ヘッダー */
+.header {
+    background: #222;
+    padding: 15px;
+    text-align: center;
+    font-size: 20px;
+    border-bottom: 2px solid #444;
+}
+
+/* メイン */
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    gap: 20px;
+}
+
+/* 上段：写真 + プロフィール */
+.top-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* 左側（画像） */
+.left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 画像 */
+.profile-img {
+    width: 250px;
+    height: 300px;
+}
+
+/* 右側 */
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 名前 */
+.name {
+    font-size: 32px;
+    border-bottom: 1px solid #555;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+/* プロフィール */
+.profile p {
+    margin: 5px 0;
+}
+
+/* 区切り線 */
+.divider {
+    border: none;
+    border-top: 1px solid #555;
+    margin: 10px 0;
+}
+
+/* 紹介文 */
+.intro-section {
+    max-width: 800px;
+}
+
+/* 見出し「自己紹介」 */
+.intro-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #313131; /* 指定カラーに変更 */
+}
+
+/* 紹介文本文 */
+.intro {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+/* 戻るボタン */
+.back {
+    display: inline-block;
+    margin: 15px;
+    padding: 10px 15px;
+    background: #444;
+    color: white;
+    text-decoration: none;
+}
+.back:hover {
+    background: #666;
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+    .top-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-img {
+        width: 80%;
+        height: auto;
+        margin-bottom: 15px;
+    }
+
+    .name {
+        font-size: 24px;
+    }
+
+    .intro-section {
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .intro-title {
+        font-size: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    職員詳細データ
+</div>
+
+<a href="index.html" class="back">← 一覧に戻る</a>
+
+<div class="container">
+
+    <!-- 上段：写真 + プロフィール -->
+    <div class="top-section">
+        <div class="left">
+            <img src="arisa.png" class="profile-img">
+        </div>
+
+        <div class="info">
+            <div class="name">サンコミ</div>
+
+            <div class="profile">
+                <p>身長：165cm</p>
+                <p>年齢：18歳</p>
+                <p>出身区：T社</p>
+                <p>性別 : 男</p>
+
+                <hr class="divider">
+
+                <p>所属部門：中央本部</p>
+
+                <p>装備E.G.O：ラブ</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 下段：自己紹介＋紹介文 -->
+    <div class="intro-section">
+        <div class="intro-title">自己紹介</div>
+        <div class="intro">
+            中央本部職員。誰に対しても口が悪く誰かをディスるのは日常茶飯事。趣味は機械の魔改造、何度か賞を貰ったことがあるレベルの技量であり抽出部門チーフ候補に選ばれたが、本人は陰気臭いとこはイヤと全力で拒否＆脅しを管理人にしたおかげか今でも中央の職員として在籍出来ている。
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
