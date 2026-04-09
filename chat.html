@@ -13,20 +13,23 @@ body {
   padding: 15px;
 }
 
-/* タイトル */
 h1 {
   text-align: center;
   font-size: 22px;
 }
 
-/* 名前（クリック部分） */
 h2 {
   cursor: pointer;
   margin: 10px 0;
   font-size: 18px;
 }
 
-/* 中身 */
+h3 {
+  cursor: pointer;
+  margin: 8px 0;
+  font-size: 15px;
+}
+
 .content {
   display: none;
   margin-left: 10px;
@@ -35,41 +38,37 @@ h2 {
   font-size: 14px;
 }
 
-/* 戻るボタン */
-.back {
-    display: inline-block;
-    margin: 20px auto;
-    padding: 12px 18px;
-    background: #444;
-    color: white;
-    text-decoration: none;
-    text-align: center;
-    border-radius: 8px;
+.content .content {
+  margin-left: 20px;
+  border-left: 2px dashed #888;
 }
 
-/* 中央寄せ */
+/* 戻るボタン */
+.back {
+  display: inline-block;
+  margin: 20px auto;
+  padding: 12px 18px;
+  background: #444;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 8px;
+}
+
 .back-wrapper {
   text-align: center;
 }
 
-/* ホバー（PC用） */
 .back:hover {
-    background: #666;
+  background: #666;
 }
 
-/* スマホ用調整 */
+/* スマホ */
 @media screen and (max-width: 600px) {
-  h1 {
-    font-size: 20px;
-  }
-
-  h2 {
-    font-size: 16px;
-  }
-
-  .content {
-    font-size: 13px;
-  }
+  h1 { font-size: 20px; }
+  h2 { font-size: 16px; }
+  h3 { font-size: 14px; }
+  .content { font-size: 13px; }
 
   .back {
     width: 80%;
@@ -84,29 +83,109 @@ h2 {
 
 <h1>会話ログ</h1>
 
+<!-- アリサ -->
 <h2 onclick="toggle(this)">▶ アリサ</h2>
-<div class="content">ここにアリサの会話を書く</div>
+<div class="content">
+  <h3 onclick="toggle(this)">▶ 1</h3>
+  <div class="content">ここに書く</div>
 
+  <h3 onclick="toggle(this)">▶ 2</h3>
+  <div class="content">ここに書く</div>
+
+  <h3 onclick="toggle(this)">▶ 3</h3>
+  <div class="content">ここに書く</div>
+</div>
+
+<!-- オーロラ -->
 <h2 onclick="toggle(this)">▶ オーロラ</h2>
-<div class="content">ここにオーロラの会話を書く</div>
+<div class="content">
+  <h3 onclick="toggle(this)">▶ 1</h3>
+  <div class="content">ここに書く</div>
 
+  <h3 onclick="toggle(this)">▶ 2</h3>
+  <div class="content">ここに書く</div>
+
+  <h3 onclick="toggle(this)">▶ 3</h3>
+  <div class="content">ここに書く</div>
+</div>
+
+<!-- サンコミ -->
 <h2 onclick="toggle(this)">▶ サンコミ</h2>
-<div class="content">ここにサンコミの会話を書く</div>
+<div class="content">
+  <h3 onclick="toggle(this)">▶ 1</h3>
+  <div class="content">ここに書く</div>
 
+  <h3 onclick="toggle(this)">▶ 2</h3>
+  <div class="content">ここに書く</div>
+
+  <h3 onclick="toggle(this)">▶ 3</h3>
+  <div class="content">ここに書く</div>
+</div>
+
+<!-- ディア -->
 <h2 onclick="toggle(this)">▶ ディア</h2>
-<div class="content">ここにディアの会話を書く</div>
+<div class="content">
+  <h3 onclick="toggle(this)">▶ 1</h3>
+  <div class="content">ここに書く</div>
 
+  <h3 onclick="toggle(this)">▶ 2</h3>
+  <div class="content">ここに書く</div>
+
+  <h3 onclick="toggle(this)">▶ 3</h3>
+  <div class="content">ここに書く</div>
+</div>
+
+<!-- 信長 -->
 <h2 onclick="toggle(this)">▶ 信長</h2>
-<div class="content">ここに信長の会話を書く</div>
+<div class="content">
+  <h3 onclick="toggle(this)">▶ 1</h3>
+  <div class="content">ここに書く</div>
 
+  <h3 onclick="toggle(this)">▶ 2</h3>
+  <div class="content">ここに書く</div>
+
+  <h3 onclick="toggle(this)">▶ 3</h3>
+  <div class="content">ここに書く</div>
+</div>
+
+<!-- フランク -->
 <h2 onclick="toggle(this)">▶ フランク</h2>
-<div class="content">ここにフランクの会話を書く</div>
+<div class="content">
+  <h3 onclick="toggle(this)">▶ 1</h3>
+  <div class="content">ここに書く</div>
 
+  <h3 onclick="toggle(this)">▶ 2</h3>
+  <div class="content">ここに書く</div>
+
+  <h3 onclick="toggle(this)">▶ 3</h3>
+  <div class="content">ここに書く</div>
+</div>
+
+<!-- リンネ -->
 <h2 onclick="toggle(this)">▶ リンネ</h2>
-<div class="content">ここにリンネの会話を書く</div>
+<div class="content">
+  <h3 onclick="toggle(this)">▶ 1</h3>
+  <div class="content">ここに書く</div>
 
+  <h3 onclick="toggle(this)">▶ 2</h3>
+  <div class="content">ここに書く</div>
+
+  <h3 onclick="toggle(this)">▶ 3</h3>
+  <div class="content">ここに書く</div>
+</div>
+
+<!-- ヤマ -->
 <h2 onclick="toggle(this)">▶ ヤマ</h2>
-<div class="content">ここにヤマの会話を書く</div>
+<div class="content">
+  <h3 onclick="toggle(this)">▶ 1</h3>
+  <div class="content">ここに書く</div>
+
+  <h3 onclick="toggle(this)">▶ 2</h3>
+  <div class="content">ここに書く</div>
+
+  <h3 onclick="toggle(this)">▶ 3</h3>
+  <div class="content">ここに書く</div>
+</div>
 
 <div class="back-wrapper">
   <a href="index.html" class="back">← 戻る</a>
