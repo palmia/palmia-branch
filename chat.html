@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会話ログ</title>
+
+<style>
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: sans-serif;
+  padding: 15px;
+}
+
+/* タイトル */
+h1 {
+  text-align: center;
+  font-size: 22px;
+}
+
+/* 名前（クリック部分） */
+h2 {
+  cursor: pointer;
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+/* 中身 */
+.content {
+  display: none;
+  margin-left: 10px;
+  padding: 10px;
+  border-left: 2px solid #ffffff;
+  font-size: 14px;
+}
+
+/* 戻るボタン */
+.back {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 12px 18px;
+    background: #444;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* 中央寄せ */
+.back-wrapper {
+  text-align: center;
+}
+
+/* ホバー（PC用） */
+.back:hover {
+    background: #666;
+}
+
+/* スマホ用調整 */
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  .content {
+    font-size: 13px;
+  }
+
+  .back {
+    width: 80%;
+    padding: 14px;
+    font-size: 16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h1>会話ログ</h1>
+
+<h2 onclick="toggle(this)">▶ アリサ</h2>
+<div class="content">ここにアリサの会話を書く</div>
+
+<h2 onclick="toggle(this)">▶ オーロラ</h2>
+<div class="content">ここにオーロラの会話を書く</div>
+
+<h2 onclick="toggle(this)">▶ サンコミ</h2>
+<div class="content">ここにサンコミの会話を書く</div>
+
+<h2 onclick="toggle(this)">▶ ディア</h2>
+<div class="content">ここにディアの会話を書く</div>
+
+<h2 onclick="toggle(this)">▶ 信長</h2>
+<div class="content">ここに信長の会話を書く</div>
+
+<h2 onclick="toggle(this)">▶ フランク</h2>
+<div class="content">ここにフランクの会話を書く</div>
+
+<h2 onclick="toggle(this)">▶ リンネ</h2>
+<div class="content">ここにリンネの会話を書く</div>
+
+<h2 onclick="toggle(this)">▶ ヤマ</h2>
+<div class="content">ここにヤマの会話を書く</div>
+
+<div class="back-wrapper">
+  <a href="index.html" class="back">← 戻る</a>
+</div>
+
+<script>
+function toggle(element) {
+  const content = element.nextElementSibling;
+
+  if (content.style.display === "block") {
+    content.style.display = "none";
+    element.textContent = element.textContent.replace("▼", "▶");
+  } else {
+    content.style.display = "block";
+    element.textContent = element.textContent.replace("▶", "▼");
+  }
+}
+</script>
+
+</body>
+</html>
