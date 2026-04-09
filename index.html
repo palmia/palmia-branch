@@ -29,6 +29,7 @@
     border-radius: 10px;
     padding: 15px;
     transition: 0.3s;
+    text-align: center;
   }
 
   .card img {
@@ -39,6 +40,8 @@
   .name {
     font-size: 18px;
     margin-top: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
   }
 
   .c1 { border: 2px solid #C54635; }
@@ -50,8 +53,25 @@
   .c7 { border: 2px solid #A82F2E; }
   .c8 { border: 2px solid #0F7A0E; }
 
+  /* 会話ログ用 */
+  .c9 {
+    border: 2px solid #888;
+  }
+
   .card:hover {
     transform: scale(1.05);
+  }
+
+  /* 会話ログだけボタン風 */
+  .back {
+    background: #444;
+    text-decoration: none;
+    color: white;
+    display: block;
+  }
+
+  .back:hover {
+    background: #666;
   }
 </style>
 </head>
@@ -126,12 +146,12 @@
     <p class="name">ヤマ</p>
   </div>
 
+  <!-- 会話ログ（追加） -->
+  <a href="chat.html" class="card c9 back">
+    <img src="https://via.placeholder.com/300x300/222222/ffffff?text=LOG">
+    <p class="name">会話ログ</p>
+  </a>
 
- <!-- 会話ログカード -->
-<a href="chat.html" class="card c9 back">
-  <img src="https://via.placeholder.com/300x300/222222/ffffff?text=LOG">
-  <p class="name">会話ログ</p>
-</a>
 </div>
 
 </body>
