@@ -103,10 +103,6 @@ body {
 }
 
 
-/* 紹介文 */
-.intro-section {
-    max-width: 800px;
-}
 
 /* 見出し「自己紹介」 */
 .intro-title {
@@ -149,50 +145,6 @@ body {
 }
 .back:hover {
     background: #666;
-}
-
-/* セリフ一覧 */
-.profile-box{
-    width:360px;
-    border:2px solid white;
-    background:#1a1a1a;
-    box-shadow:0 0 20px rgba(255,255,255,0.1);
-    margin-top:30px;
-}
-
-.item{
-    border-bottom:2px solid white;
-}
-
-.toggle{
-    padding:16px;
-    cursor:pointer;
-    background:#1a1a1a;
-    transition:0.3s;
-    font-size:18px;
-    user-select:none;
-}
-
-.toggle:hover{
-    background:#2a2a2a;
-}
-
-.content{
-    max-height:0;
-    overflow:hidden;
-    background:#2b2b2b;
-    transition:max-height 0.4s ease;
-}
-
-.item.active .content{
-    max-height:200px;
-}
-
-.content p{
-    margin:0;
-    padding:16px;
-    line-height:1.7;
-    color:#dddddd;
 }
 
 
@@ -288,109 +240,6 @@ body {
     </div>
 
 </div>
-    <!-- セリフ一覧 -->
-    <div class="profile-box">
-
-        <!-- サンプル1 -->
-        <div class="item">
-            <div class="toggle" onclick="toggleItem(this)">
-                ▶ サンプル
-            </div>
-
-            <div class="content">
-                <p>
-                    「サンプル」
-                </p>
-            </div>
-        </div>
-
-        <!-- サンプル2 -->
-        <div class="item">
-            <div class="toggle" onclick="toggleItem(this)">
-                ▶ サンプル
-            </div>
-
-            <div class="content">
-                <p>
-                    「サンプル」
-                </p>
-            </div>
-        </div>
-
-        <!-- サンプル3 -->
-        <div class="item">
-            <div class="toggle" onclick="toggleItem(this)">
-                ▶ サンプル
-            </div>
-
-            <div class="content">
-                <p>
-                    「サンプル」
-                </p>
-            </div>
-        </div>
-
-        <!-- サンプル4 -->
-        <div class="item">
-            <div class="toggle" onclick="toggleItem(this)">
-                ▶ サンプル
-            </div>
-
-            <div class="content">
-                <p>
-                    「サンプル」
-                </p>
-            </div>
-        </div>
-
-        <!-- サンプル5 -->
-        <div class="item">
-            <div class="toggle" onclick="toggleItem(this)">
-                ▶ サンプル
-            </div>
-
-            <div class="content">
-                <p>
-                    「サンプル」
-                </p>
-            </div>
-        </div>
-
-        <!-- サンプル6 -->
-        <div class="item">
-            <div class="toggle" onclick="toggleItem(this)">
-                ▶ サンプル
-            </div>
-
-            <div class="content">
-                <p>
-                    「サンプル」
-                </p>
-            </div>
-        </div>
-
-        <!-- サンプル7 -->
-        <div class="item">
-            <div class="toggle" onclick="toggleItem(this)">
-                ▶ サンプル
-            </div>
-
-            <div class="content">
-                <p>
-                    「サンプル」
-                </p>
-            </div>
-        </div>
-
-    </div>
-
-</div>
-
-<script>
-function toggleItem(element){
-    element.parentElement.classList.toggle("active");
-}
-</script>
 
 </body>
 </html>
