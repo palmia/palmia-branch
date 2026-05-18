@@ -31,14 +31,14 @@ body {
     gap: 20px;
 }
 
-/* 上段：写真 + プロフィール */
+/* 上段 */
 .top-section {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
 }
 
-/* 左側（画像） */
+/* 左 */
 .left {
     display: flex;
     flex-direction: column;
@@ -51,7 +51,7 @@ body {
     height: 300px;
 }
 
-/* 右側 */
+/* 右 */
 .info {
     display: flex;
     flex-direction: column;
@@ -70,7 +70,7 @@ body {
     margin: 5px 0;
 }
 
-/* 区切り線 */
+/* 区切り */
 .divider {
     border: none;
     border-top: 1px solid #555;
@@ -80,31 +80,45 @@ body {
 /* トラウマ */
 .trauma {
     font-size: 16px;
-    color: #FF0010; /* 赤色に変更 */
+    color: #FF0010;
     margin-top: 10px;
 }
 
-/* 紹介文 */
+/* 紹介 */
 .intro-section {
     max-width: 800px;
 }
 
-/* 見出し「自己紹介」 */
 .intro-title {
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #0F7A0E; /* 指定カラーに変更 */
+    color: #0F7A0E;
 }
 
-/* 紹介文本文 */
 .intro {
     font-size: 16px;
     line-height: 1.5;
     text-align: left;
 }
 
-/* 戻るボタン */
+/* 記録 */
+.record-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.record-text {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: left;
+    color: #ffffff;
+    margin-bottom: 25px;
+}
+
+/* 戻る */
 .back {
     display: inline-block;
     margin: 15px;
@@ -113,28 +127,58 @@ body {
     color: white;
     text-decoration: none;
 }
+
 .back:hover {
     background: #666;
 }
 
-/* 記録部分だけ白色（見出し＋本文） */
-.record-title {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #ffffff; /* 白色に変更 */
+/* セリフ一覧 */
+.profile-box{
+    width:360px;
+    border:2px solid white;
+    background:#1a1a1a;
+    box-shadow:0 0 20px rgba(255,255,255,0.1);
+    margin-top:30px;
 }
 
-.record-text {
-    font-size: 16px;
-    line-height: 1.5;
-    text-align: left;
-    color: #ffffff; /* 白色 */
+.item{
+    border-bottom:2px solid white;
 }
 
+.toggle{
+    padding:16px;
+    cursor:pointer;
+    background:#1a1a1a;
+    transition:0.3s;
+    font-size:18px;
+    user-select:none;
+}
 
-/* スマホ対応 */
+.toggle:hover{
+    background:#2a2a2a;
+}
+
+.content{
+    max-height:0;
+    overflow:hidden;
+    background:#2b2b2b;
+    transition:max-height 0.4s ease;
+}
+
+.item.active .content{
+    max-height:200px;
+}
+
+.content p{
+    margin:0;
+    padding:16px;
+    line-height:1.7;
+    color:#dddddd;
+}
+
+/* スマホ */
 @media (max-width: 600px) {
+
     .top-section {
         flex-direction: column;
         align-items: center;
@@ -155,8 +199,8 @@ body {
         text-align: center;
     }
 
-    .intro-title {
-        font-size: 20px;
+    .profile-box{
+        width:100%;
     }
 }
 </style>
@@ -172,20 +216,24 @@ body {
 
 <div class="container">
 
-    <!-- 上段：写真 + プロフィール -->
+    <!-- 上段 -->
     <div class="top-section">
+
+        <!-- 左 -->
         <div class="left">
             <img src="arisa.png" class="profile-img">
         </div>
 
+        <!-- 右 -->
         <div class="info">
+
             <div class="name">ヤマ</div>
 
             <div class="profile">
                 <p>身長：178cm</p>
                 <p>年齢：20歳</p>
                 <p>出身区：U社</p>
-                <p>性別 : 男</p>
+                <p>性別：男</p>
 
                 <hr class="divider">
 
@@ -193,39 +241,186 @@ body {
 
                 <p>装備E.G.O：星の音</p>
 
-<hr class="divider">
+                <hr class="divider">
+
                 <div class="trauma">
-                <strong>トラウマ：</strong>奪われること
+                    <strong>トラウマ：</strong>奪われること
+                </div>
+
             </div>
         </div>
     </div>
 
-    <!-- 下段：自己紹介＋紹介文 -->
+    <!-- 自己紹介 -->
     <div class="intro-section">
-        <div class="intro-title">自己紹介</div>
-        <div class="intro">
-            
+
+        <div class="intro-title">
+            自己紹介
         </div>
-    </div>懲戒部門職員。自分にとって楽しそうな事に首を突っ込んで何かをやらかすMｒ.愉快犯。実験するのが好きで、結果求める為なら全員巻き込む気満々であり自身の身体を張ることを躊躇う気はない。しかし彼の体力はランクVの職員の中では1番無く体力頼みの実験は仲間に任せている。
-</div>
-「うぃーす、ヤマで～す。この世の終わりへよーこそー」
-</div>
+
+        <div class="intro">
+            懲戒部門職員。
+
+            自分にとって楽しそうな事に首を突っ込み、
+            盛大に何かをやらかす
+            Mr.愉快犯。
+
+            実験するのが好きで、
+            結果を求める為なら
+            全員巻き込む気満々であり、
+            自身の身体を張ることを躊躇う気もない。
+
+            しかし、
+            彼の体力は
+            ランクV職員の中では1番無く、
+            体力頼みの実験は
+            仲間に任せている。
+
+            <br><br>
+
+            「うぃーす、ヤマで～す。この世の終わりへよーこそー」
+        </div>
+    </div>
+
+    <!-- 記録1 -->
+    <div class="record-title">
+        記録1
+    </div>
+
+    <div class="record-text">
+        かなり頭が良く、
+        作業も調整して
+        自由に結果を変えれるなど、
+        様々な特技を持っている。
+
+        しかし、
+        ランクV職員の中だと
+        体力が１番無く、
+        仲間から
+        「もやし」
+        とディスられる。
+
+        星の音は
+        他の職員が装備していた時は
+        何も起きなかったが、
+        ヤマが装備してから
+        いきなり喋りだしたり、
+        勝手に動いたりと
+        特殊な状況になっている。
+    </div>
+
+    <!-- 記録2 -->
+    <div class="record-title">
+        記録2
+    </div>
+
+    <div class="record-text">
+        記録の内容をここに記入
+    </div>
+
+    <!-- セリフ一覧 -->
+    <div class="profile-box">
+
+        <!-- サンプル1 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル2 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル3 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル4 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル5 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル6 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル7 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
- </div>
-
-        <div class="record-title">記録1</div>
-        <div class="record-text">
-            かなり頭が良く、作業も調整して自由に結果を変えれるなど様々な特技を持っている。しかしランクV職員の中だと体力が１番無く、仲間からもやしとディスられる。
-星の音は他の職員が装備していた時は何も起きなかったが、ヤマが装備してからいきなり喋りだしたり勝手に動いたりと特殊な状況になっている。
-
-</div>
-
-        <div class="record-title">記録2</div>
-        <div class="record-text">
-            記録の内容をここに記入
-
-</div>
+<script>
+function toggleItem(element){
+    element.parentElement.classList.toggle("active");
+}
+</script>
 
 </body>
 </html>

@@ -31,14 +31,14 @@ body {
     gap: 20px;
 }
 
-/* 上段：写真 + プロフィール */
+/* 上段 */
 .top-section {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
 }
 
-/* 左側（画像） */
+/* 左 */
 .left {
     display: flex;
     flex-direction: column;
@@ -51,7 +51,7 @@ body {
     height: 300px;
 }
 
-/* 右側 */
+/* 右 */
 .info {
     display: flex;
     flex-direction: column;
@@ -70,7 +70,7 @@ body {
     margin: 5px 0;
 }
 
-/* 区切り線 */
+/* 区切り */
 .divider {
     border: none;
     border-top: 1px solid #555;
@@ -80,31 +80,45 @@ body {
 /* トラウマ */
 .trauma {
     font-size: 16px;
-    color: #FF0010; /* 赤色に変更 */
+    color: #FF0010;
     margin-top: 10px;
 }
 
-/* 紹介文 */
+/* 紹介 */
 .intro-section {
     max-width: 800px;
 }
 
-/* 見出し「自己紹介」 */
 .intro-title {
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #A82F2E; /* 指定カラーに変更 */
+    color: #A82F2E;
 }
 
-/* 紹介文本文 */
 .intro {
     font-size: 16px;
     line-height: 1.5;
     text-align: left;
 }
 
-/* 戻るボタン */
+/* 記録 */
+.record-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.record-text {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: left;
+    color: #ffffff;
+    margin-bottom: 25px;
+}
+
+/* 戻る */
 .back {
     display: inline-block;
     margin: 15px;
@@ -113,28 +127,58 @@ body {
     color: white;
     text-decoration: none;
 }
+
 .back:hover {
     background: #666;
 }
 
-/* 記録部分だけ白色（見出し＋本文） */
-.record-title {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #ffffff; /* 白色に変更 */
+/* セリフ一覧 */
+.profile-box{
+    width:360px;
+    border:2px solid white;
+    background:#1a1a1a;
+    box-shadow:0 0 20px rgba(255,255,255,0.1);
+    margin-top:30px;
 }
 
-.record-text {
-    font-size: 16px;
-    line-height: 1.5;
-    text-align: left;
-    color: #ffffff; /* 白色 */
+.item{
+    border-bottom:2px solid white;
 }
 
+.toggle{
+    padding:16px;
+    cursor:pointer;
+    background:#1a1a1a;
+    transition:0.3s;
+    font-size:18px;
+    user-select:none;
+}
 
-/* スマホ対応 */
+.toggle:hover{
+    background:#2a2a2a;
+}
+
+.content{
+    max-height:0;
+    overflow:hidden;
+    background:#2b2b2b;
+    transition:max-height 0.4s ease;
+}
+
+.item.active .content{
+    max-height:200px;
+}
+
+.content p{
+    margin:0;
+    padding:16px;
+    line-height:1.7;
+    color:#dddddd;
+}
+
+/* スマホ */
 @media (max-width: 600px) {
+
     .top-section {
         flex-direction: column;
         align-items: center;
@@ -155,8 +199,8 @@ body {
         text-align: center;
     }
 
-    .intro-title {
-        font-size: 20px;
+    .profile-box{
+        width:100%;
     }
 }
 </style>
@@ -172,20 +216,24 @@ body {
 
 <div class="container">
 
-    <!-- 上段：写真 + プロフィール -->
+    <!-- 上段 -->
     <div class="top-section">
+
+        <!-- 左 -->
         <div class="left">
             <img src="arisa.png" class="profile-img">
         </div>
 
+        <!-- 右 -->
         <div class="info">
+
             <div class="name">リンネ</div>
 
             <div class="profile">
                 <p>身長：160cm</p>
                 <p>年齢：19歳</p>
                 <p>出身区：B社</p>
-                <p>性別 : 女</p>
+                <p>性別：女</p>
 
                 <hr class="divider">
 
@@ -193,38 +241,173 @@ body {
 
                 <p>装備E.G.O：黄昏</p>
 
-<hr class="divider">
+                <hr class="divider">
+
                 <div class="trauma">
-                <strong>トラウマ：</strong>？？？
+                    <strong>トラウマ：</strong>？？？
+                </div>
+
             </div>
         </div>
     </div>
 
-    <!-- 下段：自己紹介＋紹介文 -->
+    <!-- 自己紹介 -->
     <div class="intro-section">
-        <div class="intro-title">自己紹介</div>
-        <div class="intro">
-            
+
+        <div class="intro-title">
+            自己紹介
         </div>
-    </div>懲戒部門チーフ。楽天家で戦闘狂、やること無くなるとわざと幻想体を複数体脱走させて鎮圧するクレーバーな暇つぶしをほぼ毎日したり、GIFT取りでクリフォト過負荷を無視して作業し更に幻想体の脱走、死者が増えたりと散々である。これでも本人は正常である。
-</div>
-「リンネだよ～Welcome to hell～^^」
-</div>
+
+        <div class="intro">
+            懲戒部門チーフ。
+
+            楽天家で戦闘狂。
+            やること無くなると
+            わざと幻想体を複数体脱走させて鎮圧する
+            クレーバーな暇つぶしをほぼ毎日したり、
+            GIFT取りでクリフォト過負荷を無視して作業し、
+            更に幻想体の脱走、死者が増えたりと散々である。
+
+            これでも本人は正常である。
+
+            <br><br>
+
+            「リンネだよ～Welcome to hell～^^」
+        </div>
+    </div>
+
+    <!-- 記録1 -->
+    <div class="record-title">
+        記録1
+    </div>
+
+    <div class="record-text">
+        圧倒的豪運と才能で、
+        No.3の実力まで登り詰めている。
+
+        型に嵌らない戦い方で、
+        上位の幻想体、試練以外
+        何も装備せずに真向から鎮圧している。
+        （本人曰く舐めプ）
+
+        黄昏装備してから三鳥に異様に懐かれるようになり、
+        あまりの鬱陶しさに
+        鎮圧、暇つぶし、喧嘩以外
+        装備しないようにしている。
+    </div>
+
+    <!-- 記録2 -->
+    <div class="record-title">
+        記録2
+    </div>
+
+    <div class="record-text">
+        記録の内容をここに記入
+    </div>
+
+    <!-- セリフ一覧 -->
+    <div class="profile-box">
+
+        <!-- サンプル1 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル2 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル3 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル4 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル5 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル6 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル7 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
- </div>
-
-        <div class="record-title">記録1</div>
-        <div class="record-text">
-           圧倒的豪運と才能で、No.3の実力まで登り詰めている。型に嵌らない戦い方で、上位の幻想体、試練以外何も装備せずに真向から鎮圧している。(本人曰く舐めプ)
-黄昏装備してから三鳥に異様に懐かれるようになり、あまりの鬱陶しさに鎮圧、暇つぶし、喧嘩以外装備しないようにしている。
-</div>
-
-        <div class="record-title">記録2</div>
-        <div class="record-text">
-            記録の内容をここに記入
-
-</div>
+<script>
+function toggleItem(element){
+    element.parentElement.classList.toggle("active");
+}
+</script>
 
 </body>
 </html>

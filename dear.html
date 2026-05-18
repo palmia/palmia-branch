@@ -31,14 +31,14 @@ body {
     gap: 20px;
 }
 
-/* 上段：写真 + プロフィール */
+/* 上段 */
 .top-section {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
 }
 
-/* 左側（画像） */
+/* 左 */
 .left {
     display: flex;
     flex-direction: column;
@@ -51,7 +51,7 @@ body {
     height: 300px;
 }
 
-/* 右側 */
+/* 右 */
 .info {
     display: flex;
     flex-direction: column;
@@ -70,7 +70,7 @@ body {
     margin: 5px 0;
 }
 
-/* 区切り線 */
+/* 区切り */
 .divider {
     border: none;
     border-top: 1px solid #555;
@@ -80,47 +80,45 @@ body {
 /* トラウマ */
 .trauma {
     font-size: 16px;
-    color: #FF0010; /* 赤色に変更 */
+    color: #FF0010;
     margin-top: 10px;
 }
 
-/* 紹介文 */
+/* 紹介 */
 .intro-section {
     max-width: 800px;
 }
 
-/* 見出し「自己紹介」 */
 .intro-title {
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #6C1F31; /* 指定カラーに変更 */
+    color: #6C1F31;
 }
 
-/* 紹介文本文 */
 .intro {
     font-size: 16px;
     line-height: 1.5;
     text-align: left;
 }
 
-/* 記録部分だけ白色（見出し＋本文） */
+/* 記録 */
 .record-title {
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #ffffff; /* 白色に変更 */
+    color: #ffffff;
 }
 
 .record-text {
     font-size: 16px;
     line-height: 1.5;
     text-align: left;
-    color: #ffffff; /* 白色 */
+    color: #ffffff;
+    margin-bottom: 25px;
 }
 
-
-/* 戻るボタン */
+/* 戻る */
 .back {
     display: inline-block;
     margin: 15px;
@@ -129,12 +127,58 @@ body {
     color: white;
     text-decoration: none;
 }
+
 .back:hover {
     background: #666;
 }
 
-/* スマホ対応 */
+/* セリフ一覧 */
+.profile-box{
+    width:360px;
+    border:2px solid white;
+    background:#1a1a1a;
+    box-shadow:0 0 20px rgba(255,255,255,0.1);
+    margin-top:30px;
+}
+
+.item{
+    border-bottom:2px solid white;
+}
+
+.toggle{
+    padding:16px;
+    cursor:pointer;
+    background:#1a1a1a;
+    transition:0.3s;
+    font-size:18px;
+    user-select:none;
+}
+
+.toggle:hover{
+    background:#2a2a2a;
+}
+
+.content{
+    max-height:0;
+    overflow:hidden;
+    background:#2b2b2b;
+    transition:max-height 0.4s ease;
+}
+
+.item.active .content{
+    max-height:200px;
+}
+
+.content p{
+    margin:0;
+    padding:16px;
+    line-height:1.7;
+    color:#dddddd;
+}
+
+/* スマホ */
 @media (max-width: 600px) {
+
     .top-section {
         flex-direction: column;
         align-items: center;
@@ -155,8 +199,8 @@ body {
         text-align: center;
     }
 
-    .intro-title {
-        font-size: 20px;
+    .profile-box{
+        width:100%;
     }
 }
 </style>
@@ -172,20 +216,24 @@ body {
 
 <div class="container">
 
-    <!-- 上段：写真 + プロフィール -->
+    <!-- 上段 -->
     <div class="top-section">
+
+        <!-- 左 -->
         <div class="left">
             <img src="arisa.png" class="profile-img">
         </div>
 
+        <!-- 右 -->
         <div class="info">
+
             <div class="name">ディア</div>
 
             <div class="profile">
                 <p>身長：174cm</p>
                 <p>年齢：23歳</p>
                 <p>出身区：D社</p>
-                <p>性別 : 男</p>
+                <p>性別：男</p>
 
                 <hr class="divider">
 
@@ -194,38 +242,171 @@ body {
                 <p>装備E.G.O：笑顔</p>
 
                 <hr class="divider">
+
                 <div class="trauma">
-                <strong>トラウマ：</strong>裏切られること
+                    <strong>トラウマ：</strong>裏切られること
+                </div>
+
             </div>
         </div>
     </div>
 
-    <!-- 下段：自己紹介＋紹介文 -->
+    <!-- 自己紹介 -->
     <div class="intro-section">
-        <div class="intro-title">自己紹介</div>
-        <div class="intro">
-            福祉部門チーフ。仕事での人運がかなり終わってる不憫枠、仕事は真面目にしていて安定してると思いきや他所の職員達のせいで脱走と死者のオンパレード、社畜も真っ青な量の追加の仕事をやらされる日々、当然定時に終わるはずも無くストレスで胃が悲鳴を上げている。
-</div>
-「どうもディアです。なんです...?これ以上何も話しませんよ.....」
-</div>
-</div>
 
- </div>
-
-        <div class="record-title">記録1</div>
-        <div class="record-text">
-            全てにおいて平凡、目立った特技もない本当にシンプルな男である。(当社比)
-最初は何ともなかったが、時間が経つごとに異常行動をとるようになっていき遂には正常な職員を殺して死肉を貪り喰らい始める。この症状はどうやっても治まらず本人の自制も効かない為処分も検討されたが、この時人手不足で安易に出来ず安定した頃には既にチーフに昇格済で結局何も出来ず今に至る。
-</div>
-
-        <div class="record-title">記録2</div>
-        <div class="record-text">
-            記録の内容をここに記入
+        <div class="intro-title">
+            自己紹介
         </div>
+
+        <div class="intro">
+            福祉部門チーフ。
+
+            仕事での人運がかなり終わってる不憫枠。
+            仕事は真面目にしていて安定してると思いきや、
+            他所の職員達のせいで脱走と死者のオンパレード。
+
+            社畜も真っ青な量の追加の仕事をやらされる日々で、
+            当然定時に終わるはずも無く、
+            ストレスで胃が悲鳴を上げている。
+
+            <br><br>
+
+            「どうもディアです。なんです...?これ以上何も話しませんよ.....」
         </div>
     </div>
 
+    <!-- 記録1 -->
+    <div class="record-title">
+        記録1
+    </div>
+
+    <div class="record-text">
+        全てにおいて平凡、
+        目立った特技もない本当にシンプルな男である。(当社比)
+
+        最初は何ともなかったが、
+        時間が経つごとに異常行動をとるようになっていき、
+        遂には正常な職員を殺して死肉を貪り喰らい始める。
+
+        この症状はどうやっても治まらず本人の自制も効かない為、
+        処分も検討されたが、
+        この時人手不足で安易に出来ず、
+        安定した頃には既にチーフに昇格済で
+        結局何も出来ず今に至る。
+    </div>
+
+    <!-- 記録2 -->
+    <div class="record-title">
+        記録2
+    </div>
+
+    <div class="record-text">
+        記録の内容をここに記入
+    </div>
+
+    <!-- セリフ一覧 -->
+    <div class="profile-box">
+
+        <!-- サンプル1 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル2 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル3 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル4 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル5 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル6 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル7 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+    </div>
+
 </div>
+
+<script>
+function toggleItem(element){
+    element.parentElement.classList.toggle("active");
+}
+</script>
 
 </body>
 </html>

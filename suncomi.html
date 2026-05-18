@@ -31,14 +31,14 @@ body {
     gap: 20px;
 }
 
-/* 上段：写真 + プロフィール */
+/* 上段 */
 .top-section {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
 }
 
-/* 左側（画像） */
+/* 左 */
 .left {
     display: flex;
     flex-direction: column;
@@ -51,7 +51,7 @@ body {
     height: 300px;
 }
 
-/* 右側 */
+/* 右 */
 .info {
     display: flex;
     flex-direction: column;
@@ -70,7 +70,7 @@ body {
     margin: 5px 0;
 }
 
-/* 区切り線 */
+/* 区切り */
 .divider {
     border: none;
     border-top: 1px solid #555;
@@ -80,46 +80,45 @@ body {
 /* トラウマ */
 .trauma {
     font-size: 16px;
-    color: #FF0010; /* 赤色に変更 */
+    color: #FF0010;
     margin-top: 10px;
 }
 
-/* 紹介文 */
+/* 紹介 */
 .intro-section {
     max-width: 800px;
 }
 
-/* 見出し「自己紹介」 */
 .intro-title {
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #313131; /* 指定カラーに変更 */
+    color: #313131;
 }
 
-/* 紹介文本文 */
 .intro {
     font-size: 16px;
     line-height: 1.5;
     text-align: left;
 }
 
-/* 記録部分だけ白色（見出し＋本文） */
+/* 記録 */
 .record-title {
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #ffffff; /* 白色に変更 */
+    color: #ffffff;
 }
 
 .record-text {
     font-size: 16px;
     line-height: 1.5;
     text-align: left;
-    color: #ffffff; /* 白色 */
+    color: #ffffff;
+    margin-bottom: 25px;
 }
 
-/* 戻るボタン */
+/* 戻る */
 .back {
     display: inline-block;
     margin: 15px;
@@ -128,12 +127,58 @@ body {
     color: white;
     text-decoration: none;
 }
+
 .back:hover {
     background: #666;
 }
 
-/* スマホ対応 */
+/* セリフ一覧 */
+.profile-box{
+    width:360px;
+    border:2px solid white;
+    background:#1a1a1a;
+    box-shadow:0 0 20px rgba(255,255,255,0.1);
+    margin-top:30px;
+}
+
+.item{
+    border-bottom:2px solid white;
+}
+
+.toggle{
+    padding:16px;
+    cursor:pointer;
+    background:#1a1a1a;
+    transition:0.3s;
+    font-size:18px;
+    user-select:none;
+}
+
+.toggle:hover{
+    background:#2a2a2a;
+}
+
+.content{
+    max-height:0;
+    overflow:hidden;
+    background:#2b2b2b;
+    transition:max-height 0.4s ease;
+}
+
+.item.active .content{
+    max-height:200px;
+}
+
+.content p{
+    margin:0;
+    padding:16px;
+    line-height:1.7;
+    color:#dddddd;
+}
+
+/* スマホ */
 @media (max-width: 600px) {
+
     .top-section {
         flex-direction: column;
         align-items: center;
@@ -154,8 +199,8 @@ body {
         text-align: center;
     }
 
-    .intro-title {
-        font-size: 20px;
+    .profile-box{
+        width:100%;
     }
 }
 </style>
@@ -171,20 +216,24 @@ body {
 
 <div class="container">
 
-    <!-- 上段：写真 + プロフィール -->
+    <!-- 上段 -->
     <div class="top-section">
+
+        <!-- 左 -->
         <div class="left">
             <img src="arisa.png" class="profile-img">
         </div>
 
+        <!-- 右 -->
         <div class="info">
+
             <div class="name">サンコミ</div>
 
             <div class="profile">
                 <p>身長：165cm</p>
                 <p>年齢：18歳</p>
                 <p>出身区：T社</p>
-                <p>性別 : 男</p>
+                <p>性別：男</p>
 
                 <hr class="divider">
 
@@ -193,37 +242,180 @@ body {
                 <p>装備E.G.O：ラブ</p>
 
                 <hr class="divider">
+
                 <div class="trauma">
-                <strong>トラウマ：</strong>自分が作ったもの壊されること
+                    <strong>トラウマ：</strong>自分が作ったもの壊されること
+                </div>
+
             </div>
         </div>
     </div>
 
-    <!-- 下段：自己紹介＋紹介文 -->
+    <!-- 自己紹介 -->
     <div class="intro-section">
-        <div class="intro-title">自己紹介</div>
+
+        <div class="intro-title">
+            自己紹介
+        </div>
+
         <div class="intro">
-            中央本部職員。誰に対しても口が悪く誰かをディスるのは日常茶飯事。趣味は機械の魔改造、何度か賞を貰ったことがあるレベルの技量であり抽出部門チーフ候補に選ばれたが、本人は陰気臭いとこはイヤと全力で拒否＆脅しを管理人にしたおかげか今でも中央の職員として在籍出来ている。
-</div>
-「おうなんだよ?あ?俺？サンコミだよ殺すぞ」
-</div>
-</div>
+            中央本部職員。
 
- </div>
+            誰に対しても口が悪く、
+            誰かをディスるのは日常茶飯事。
 
-        <div class="record-title">記録1</div>
-        <div class="record-text">
-            強さは平均的である。egoを改造して性能を大幅に引き上げれたりするがそれ以上に与える損害がでかすぎて勝手な改造を禁止されている。
-ラブを装備してからD-03-109に好かれてしまっており、他職員の出入りの隙をついて脱走し彼を追いかけ始める始末。D-03-109 が通過先々にいる人間にも感染させパンデミック発生したりと散々である。
-</div>
+            趣味は機械の魔改造で、
+            何度か賞を貰ったことがあるレベルの技量を持つ。
 
-        <div class="record-title">記録2</div>
-        <div class="record-text">
-            記録の内容をここに記入
+            抽出部門チーフ候補に選ばれたが、
+            本人は
+            「陰気臭いとこはイヤ」
+            と全力で拒否。
+
+            更に管理人を脅したおかげか、
+            今でも中央の職員として在籍出来ている。
+
+            <br><br>
+
+            「おうなんだよ？あ？俺？サンコミだよ殺すぞ」
         </div>
     </div>
 
+    <!-- 記録1 -->
+    <div class="record-title">
+        記録1
+    </div>
+
+    <div class="record-text">
+        強さは平均的である。
+
+        E.G.Oを改造して
+        性能を大幅に引き上げれたりするが、
+        それ以上に与える損害がでかすぎて
+        勝手な改造を禁止されている。
+
+        ラブを装備してから
+        D-03-109 に好かれてしまっており、
+        他職員の出入りの隙をついて脱走し、
+        彼を追いかけ始める始末。
+
+        D-03-109 が
+        通過先々にいる人間にも感染させ、
+        パンデミック発生したりと散々である。
+    </div>
+
+    <!-- 記録2 -->
+    <div class="record-title">
+        記録2
+    </div>
+
+    <div class="record-text">
+        記録の内容をここに記入
+    </div>
+
+    <!-- セリフ一覧 -->
+    <div class="profile-box">
+
+        <!-- サンプル1 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル2 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル3 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル4 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル5 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル6 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル7 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+    </div>
+
 </div>
+
+<script>
+function toggleItem(element){
+    element.parentElement.classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
