@@ -38,7 +38,7 @@ body {
     gap: 30px;
 }
 
-/* 左側（画像） */
+/* 左側 */
 .left {
     display: flex;
     flex-direction: column;
@@ -80,7 +80,7 @@ body {
 /* トラウマ */
 .trauma {
     font-size: 16px;
-    color: #FF0010; /* 赤色に変更 */
+    color: #FF0010;
     margin-top: 10px;
 }
 
@@ -89,34 +89,35 @@ body {
     max-width: 800px;
 }
 
-/* 見出し「自己紹介」 */
+/* 見出し */
 .intro-title {
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #B4324E; /* 指定カラーに変更 */
+    color: #B4324E;
 }
 
-/* 紹介文本文 */
+/* 本文 */
 .intro {
     font-size: 16px;
     line-height: 1.5;
     text-align: left;
 }
 
-/* 記録部分だけ白色（見出し＋本文） */
+/* 記録 */
 .record-title {
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #ffffff; /* 白色に変更 */
+    color: #ffffff;
 }
 
 .record-text {
     font-size: 16px;
     line-height: 1.5;
     text-align: left;
-    color: #ffffff; /* 白色 */
+    color: #ffffff;
+    margin-bottom: 25px;
 }
 
 /* 戻るボタン */
@@ -128,12 +129,58 @@ body {
     color: white;
     text-decoration: none;
 }
+
 .back:hover {
     background: #666;
 }
 
+/* セリフ一覧 */
+.profile-box{
+    width:360px;
+    border:2px solid white;
+    background:#1a1a1a;
+    box-shadow:0 0 20px rgba(255,255,255,0.1);
+    margin-top:30px;
+}
+
+.item{
+    border-bottom:2px solid white;
+}
+
+.toggle{
+    padding:16px;
+    cursor:pointer;
+    background:#1a1a1a;
+    transition:0.3s;
+    font-size:18px;
+    user-select:none;
+}
+
+.toggle:hover{
+    background:#2a2a2a;
+}
+
+.content{
+    max-height:0;
+    overflow:hidden;
+    background:#2b2b2b;
+    transition:max-height 0.4s ease;
+}
+
+.item.active .content{
+    max-height:200px;
+}
+
+.content p{
+    margin:0;
+    padding:16px;
+    line-height:1.7;
+    color:#dddddd;
+}
+
 /* スマホ対応 */
 @media (max-width: 600px) {
+
     .top-section {
         flex-direction: column;
         align-items: center;
@@ -154,8 +201,8 @@ body {
         text-align: center;
     }
 
-    .intro-title {
-        font-size: 20px;
+    .profile-box{
+        width:100%;
     }
 }
 </style>
@@ -171,20 +218,24 @@ body {
 
 <div class="container">
 
-    <!-- 上段：写真 + プロフィール -->
+    <!-- 上段 -->
     <div class="top-section">
+
+        <!-- 左 -->
         <div class="left">
             <img src="arisa.png" class="profile-img">
         </div>
 
+        <!-- 右 -->
         <div class="info">
+
             <div class="name">オーロラ</div>
 
             <div class="profile">
                 <p>身長：150cm</p>
                 <p>年齢：16歳</p>
                 <p>出身：裏路地</p>
-                <p>性別 : 女</p>
+                <p>性別：女</p>
 
                 <hr class="divider">
 
@@ -192,38 +243,169 @@ body {
 
                 <p>装備E.G.O：失楽園</p>
 
-<hr class="divider">
+                <hr class="divider">
+
                 <div class="trauma">
-                <strong>トラウマ：</strong>銃口向けられること
+                    <strong>トラウマ：</strong>銃口向けられること
+                </div>
+
             </div>
         </div>
     </div>
 
-    <!-- 下段：自己紹介＋紹介文 -->
+    <!-- 自己紹介 -->
     <div class="intro-section">
-        <div class="intro-title">自己紹介</div>
+
+        <div class="intro-title">
+            自己紹介
+        </div>
+
         <div class="intro">
-            中央本部チーフ。とにかく元気で食欲旺盛、食べれそうなモノは速攻で口に入れて食べていつも腹を壊している。生まれた環境のせいか生存スキルに全振りで今までどんなにヤバい目に遭っても生き残ってきた隠れ猛者であるが、身体そのものは極端に貧弱でありegoで補っている面もある。
-</div>
-「やっほー!!!!私オーロラ!!よろしくね!!!」
-</div>
-</div>
+            中央本部チーフ。とにかく元気で食欲旺盛、
+            食べれそうなモノは速攻で口に入れて食べて
+            いつも腹を壊している。
 
- </div>
+            生まれた環境のせいか生存スキルに全振りで、
+            今までどんなにヤバい目に遭っても
+            生き残ってきた隠れ猛者であるが、
+            身体そのものは極端に貧弱であり
+            E.G.Oで補っている面もある。
 
-        <div class="record-title">記録1</div>
-        <div class="record-text">
-            ランクV職員の中で最弱で体力もヤマ並かそれ以上に無いが危機回避能力が極まっており、この回避力で今も生き残っている。
-白夜に何度も勧誘されているが、オーロラはかなりの馬鹿だから話を理解できない所か「食べ物ちょーだい」と逆に白夜をノイローゼ寸前に追い込むまでせがんできて失楽園だけ渡して出禁になっている。
-</div>
+            <br><br>
 
-        <div class="record-title">記録2</div>
-        <div class="record-text">
-            記録の内容をここに記入
+            「やっほー!!!!私オーロラ!!よろしくね!!!」
         </div>
     </div>
 
+    <!-- 記録1 -->
+    <div class="record-title">
+        記録1
+    </div>
+
+    <div class="record-text">
+        ランクV職員の中で最弱で体力もヤマ並かそれ以上に無いが、
+        危機回避能力が極まっており、
+        この回避力で今も生き残っている。
+
+        白夜に何度も勧誘されているが、
+        オーロラはかなりの馬鹿だから話を理解できないどころか、
+        「食べ物ちょーだい」と逆に白夜を
+        ノイローゼ寸前に追い込むまでせがんできて、
+        失楽園だけ渡して出禁になっている。
+    </div>
+
+    <!-- 記録2 -->
+    <div class="record-title">
+        記録2
+    </div>
+
+    <div class="record-text">
+        記録の内容をここに記入
+    </div>
+
+    <!-- セリフ一覧 -->
+    <div class="profile-box">
+
+        <!-- サンプル1 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル2 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル3 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル4 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル5 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル6 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+        <!-- サンプル7 -->
+        <div class="item">
+            <div class="toggle" onclick="toggleItem(this)">
+                ▶ サンプル
+            </div>
+
+            <div class="content">
+                <p>
+                    「サンプル」
+                </p>
+            </div>
+        </div>
+
+    </div>
+
 </div>
+
+<script>
+function toggleItem(element){
+    element.parentElement.classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
