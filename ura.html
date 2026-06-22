@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>裏話</title>
+
+<style>
+body{
+    margin:0;
+    background:#000;
+    color:#fff;
+    font-family:"Segoe UI",sans-serif;
+}
+
+/* ヘッダー */
+.header{
+    background:#111;
+    padding:20px;
+    text-align:center;
+    border-bottom:2px solid #fff;
+}
+
+.header h1{
+    margin:0;
+    font-size:28px;
+}
+
+/* コンテンツ */
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
+
+/* カード */
+.card{
+    background:#111;
+    border:2px solid #fff;
+    border-radius:15px;
+    margin-bottom:20px;
+    overflow:hidden;
+}
+
+/* トグル */
+details{
+    padding:18px;
+}
+
+summary{
+    cursor:pointer;
+    font-size:20px;
+    font-weight:bold;
+    user-select:none;
+    list-style:none;
+}
+
+summary::-webkit-details-marker{
+    display:none;
+}
+
+summary::before{
+    content:"▶ ";
+}
+
+details[open] summary::before{
+    content:"▼ ";
+}
+
+/* 本文 */
+.content{
+    margin-top:15px;
+    padding-top:15px;
+    border-top:1px solid #555;
+    line-height:1.8;
+}
+
+/* 戻るボタン */
+.back{
+    display:block;
+    width:220px;
+    margin:30px auto;
+    text-align:center;
+    background:#fff;
+    color:#000;
+    text-decoration:none;
+    padding:12px;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+.back:hover{
+    opacity:0.8;
+}
+
+/* スマホ対応 */
+@media (max-width:600px){
+
+    .header h1{
+        font-size:22px;
+    }
+
+    summary{
+        font-size:18px;
+    }
+
+    .content{
+        font-size:14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>裏話</h1>
+</div>
+
+<div class="container">
+
+    <div class="card">
+        <details>
+            <summary>サンプル</summary>
+            <div class="content">
+                ここに裏話を書きます。<br>
+                キャラクターの誕生秘話や制作時のエピソードなど。
+            </div>
+        </details>
+    </div>
+
+    <div class="card">
+        <details>
+            <summary>サンプル</summary>
+            <div class="content">
+                ここに没設定を書きます。<br>
+                初期案や変更された設定など。
+            </div>
+        </details>
+    </div>
+
+    <div class="card">
+        <details>
+            <summary>サンプル</summary>
+            <div class="content">
+                世界観の裏設定や小ネタを書く場所です。
+            </div>
+        </details>
+    </div>
+
+    <div class="card">
+        <details>
+            <summary>サンプル</summary>
+            <div class="content">
+                ネタバレを含む内容を書く場所です。
+            </div>
+        </details>
+    </div>
+
+</div>
+
+<a href="index.html" class="back">戻る</a>
+
+</body>
+</html>
