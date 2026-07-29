@@ -31,6 +31,7 @@
     padding-bottom:60px;
   }
 
+  /* ---------- ヘッダー ---------- */
   header{
     position:relative;
     padding:56px 20px 40px;
@@ -79,6 +80,7 @@
     font-family: var(--mono);
   }
 
+  /* ---------- グリッド ---------- */
   .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -106,6 +108,7 @@
     box-shadow: 0 14px 28px -12px rgba(0,0,0,.6), 0 0 0 1px var(--tag);
   }
 
+  /* ファイルタブ */
   .tab{
     display:flex;
     align-items:center;
@@ -132,11 +135,9 @@
     height:100%;
     object-fit:cover;
     display:block;
-    filter: grayscale(85%) contrast(1.05) brightness(.85);
-    transition: filter .4s ease, transform .5s ease;
+    transition: transform .5s ease;
   }
   .card:hover img{
-    filter: grayscale(0%) contrast(1) brightness(1);
     transform: scale(1.04);
   }
   .photo-wrap::after{
@@ -176,6 +177,7 @@
     opacity:.8;
   }
 
+  /* 裏話カード（別扱い） */
   .back {
     border-style: dashed;
     justify-content:center;
@@ -318,4 +320,3 @@
 
 </body>
 </html>
-```
