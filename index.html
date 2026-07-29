@@ -4,155 +4,318 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>パルミア支部職員データベース</title>
-
 <style>
-  body {
-    background-color: #0d0d0d;
-    color: #ffffff;
-    font-family: "Courier New", monospace;
-    text-align: center;
+  @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
+
+  :root{
+    --bg:#0b0c0e;
+    --panel:#141518;
+    --panel-edge:#232427;
+    --paper:#e9e2cf;
+    --ink:#c23b3b;
+    --text:#eae6da;
+    --text-dim:#8b8d86;
+    --mono:'Special Elite', 'Courier New', monospace;
+    --sans:'Zen Kaku Gothic New', sans-serif;
   }
 
+  *{ box-sizing:border-box; }
+
+  body {
+    margin:0;
+    background:
+      radial-gradient(ellipse at 50% -10%, #1a1c1f 0%, var(--bg) 55%);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height:100vh;
+    padding-bottom:60px;
+  }
+
+  header{
+    position:relative;
+    padding:56px 20px 40px;
+    text-align:center;
+    border-bottom:1px solid var(--panel-edge);
+    overflow:hidden;
+  }
+  header::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:repeating-linear-gradient(
+      to bottom, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px,
+      transparent 1px, transparent 3px
+    );
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family: var(--mono);
+    font-size:12px;
+    letter-spacing:4px;
+    color: var(--ink);
+    margin:0 0 14px;
+  }
+  .eyebrow::before{ content:"■ "; }
   h1 {
-    color: #ff2e63;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: clamp(24px, 4vw, 38px);
+    letter-spacing: 2px;
+    margin: 0;
+    display:inline-block;
+  }
+  h1::after{
+    content:"_";
+    color: var(--ink);
+    animation: blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .subline{
+    margin-top:14px;
+    font-size:12px;
+    color: var(--text-dim);
+    letter-spacing:1px;
+    font-family: var(--mono);
   }
 
   .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    padding: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 22px;
+    padding: 44px 28px 10px;
+    max-width:1200px;
+    margin:0 auto;
   }
 
   .card {
-    background-color: #1a1a1a;
-    border-radius: 10px;
-    padding: 15px;
-    transition: 0.3s;
-    text-align: center;
+    position:relative;
+    background: var(--panel);
+    border: 1px solid var(--panel-edge);
+    border-radius: 3px;
+    padding: 0 0 16px;
+    text-align: left;
+    text-decoration:none;
+    color:inherit;
+    overflow:hidden;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    --tag: #888;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px -12px rgba(0,0,0,.6), 0 0 0 1px var(--tag);
   }
 
+  .tab{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:9px 12px;
+    background: var(--tag);
+    font-family: var(--mono);
+    font-size:11px;
+    letter-spacing:1px;
+    color:#0b0c0e;
+    font-weight:700;
+  }
+  .tab span:last-child{ opacity:.75; }
+
+  .photo-wrap{
+    position:relative;
+    margin:12px 12px 0;
+    border-radius:2px;
+    overflow:hidden;
+    aspect-ratio: 3 / 3.1;
+  }
   .card img {
-    width: 100%;
-    border-radius: 10px;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    filter: grayscale(85%) contrast(1.05) brightness(.85);
+    transition: filter .4s ease, transform .5s ease;
+  }
+  .card:hover img{
+    filter: grayscale(0%) contrast(1) brightness(1);
+    transform: scale(1.04);
+  }
+  .photo-wrap::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,.55) 100%);
+  }
+  .id-stamp{
+    position:absolute;
+    bottom:8px; right:8px;
+    font-family: var(--mono);
+    font-size:9px;
+    color: var(--paper);
+    letter-spacing:1px;
+    opacity:.85;
+    z-index:1;
   }
 
+  .name-row{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    margin:12px 12px 0;
+  }
   .name {
-    font-size: 18px;
-    margin-top: 10px;
+    font-size: 17px;
     font-weight: 700;
     letter-spacing: 1px;
+    color: var(--text);
+  }
+  .redact{
+    margin: 10px 12px 0;
+    height:6px;
+    background: repeating-linear-gradient(
+      to right, var(--panel-edge) 0 10px, transparent 10px 14px
+    );
+    opacity:.8;
   }
 
-  .c1 { border: 2px solid #C54635; }
-  .c2 { border: 2px solid #B4324E; }
-  .c3 { border: 2px solid #313131; }
-  .c4 { border: 2px solid #6C1F31; }
-  .c5 { border: 2px solid #14157E; }
-  .c6 { border: 2px solid #471147; }
-  .c7 { border: 2px solid #A82F2E; }
-  .c8 { border: 2px solid #0F7A0E; }
-
-  /* 会話ログ用 */
-  .c9 {
-    border: 2px solid #888;
-  }
-
-  .card:hover {
-    transform: scale(1.05);
-  }
-
-  /* 会話ログだけボタン風 */
   .back {
-    background: #444;
-    text-decoration: none;
-    color: white;
-    display: block;
+    border-style: dashed;
+    justify-content:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding: 28px 12px;
+    color: var(--text-dim);
+    font-family: var(--mono);
+    letter-spacing:2px;
+  }
+  .back:hover{ color: var(--text); }
+  .back-icon{
+    font-size:26px;
+    margin-bottom:10px;
+    color: var(--text-dim);
   }
 
-  .back:hover {
-    background: #666;
+  .c1 { --tag:#C54635; }
+  .c2 { --tag:#B4324E; }
+  .c3 { --tag:#5a5a5a; }
+  .c4 { --tag:#6C1F31; }
+  .c5 { --tag:#3d3fc9; }
+  .c6 { --tag:#8a3a8a; }
+  .c7 { --tag:#A82F2E; }
+  .c8 { --tag:#2fa32d; }
+  .c9 { --tag:#5c5f66; }
+
+  footer{
+    text-align:center;
+    margin-top:40px;
+    font-family: var(--mono);
+    font-size:11px;
+    color: var(--text-dim);
+    letter-spacing:1px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    h1::after{ animation:none; }
+    .card, .card img{ transition:none; }
   }
 </style>
 </head>
-
 <body>
 
-<h1>パルミア支部職員データベース</h1>
+<header>
+  <p class="eyebrow">CONFIDENTIAL / PALMIA BRANCH</p>
+  <h1>パルミア支部職員データベース</h1>
+  <p class="subline">ACCESS LEVEL: STAFF — 全 8 件のファイルを表示中</p>
+</header>
 
 <div class="container">
-
-  <!-- アリサ -->
-  <div class="card c1">
-    <a href="alisa.html">
+  <a href="alisa.html" class="card c1">
+    <div class="tab"><span>FILE 001</span><span>ACTIVE</span></div>
+    <div class="photo-wrap">
       <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQRwLC-ZHT0tS798eSySgutMAZHeiJcg-Mf4gbMIGlQSodI?width=266&height=253">
-    </a>
-    <p class="name">アリサ</p>
-  </div>
-
-  <!-- オーロラ -->
-  <div class="card c2">
-    <a href="aurora.html">
-      <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQQVaUR8I3yXR5f-x1A9KPEhAfp3iGncKCN8bnTDgib0LvI">
-    </a>
-    <p class="name">オーロラ</p>
-  </div>
-
-  <!-- サンコミ -->
-  <div class="card c3">
-    <a href="suncomi.html">
-      <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQSLH1HVCMMbSo7miabH8qwyAatscYvh2UXKGCnIsBQxuqw">
-    </a>
-    <p class="name">サンコミ</p>
-  </div>
-
-  <!-- ディア -->
-  <div class="card c4">
-    <a href="dear.html">
-      <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQSDcIzXIwvvTJFXOMQ8LtlnAcgYtxOsqkoORx3otBJRojY">
-    </a>
-    <p class="name">ディア</p>
-  </div>
-
-  <!-- 信長 -->
-  <div class="card c5">
-    <a href="nobunaga.html">
-      <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQSctUlKdoo8Qbp1O2kqCDE4AZs--H6jwFlWEYAYHtH5pco">
-    </a>
-    <p class="name">信長</p>
-  </div>
-
-  <!-- フランク -->
-  <div class="card c6">
-    <a href="furank.html">
-      <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQQtgJWhg4qGRIcfp5UDMmnFASQAC6GKJAcxTii4YSjnkxQ">
-    </a>
-    <p class="name">フランク</p>
-  </div>
-
-  <!-- リンネ -->
-  <div class="card c7">
-    <a href="rinne.html">
-      <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQSq9hBo2BDCT5GYU4uzoI7VAZ0SHwrN49IDfzlbDCnqgC8">
-    </a>
-    <p class="name">リンネ</p>
-  </div>
-
-  <!-- ヤマ -->
-  <div class="card c8">
-    <a href="yama.html">
-      <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQTmZyNwEEATS5O7bGLcu2lMASuW9LG9r-Jow4dxRoHbZSk">
-    </a>
-    <p class="name">ヤマ</p>
-  </div>
-
-  <!-- 裏話（追加） -->
-  <a href="ura.html" class="card c9 back">
-    <img src="https://via.placeholder.com/300x300/222222/ffffff?text=LOG">
-    <p class="name">裏話</p>
+      <span class="id-stamp">ID-001</span>
+    </div>
+    <div class="name-row"><span class="name">アリサ</span></div>
+    <div class="redact"></div>
   </a>
 
+  <a href="aurora.html" class="card c2">
+    <div class="tab"><span>FILE 002</span><span>ACTIVE</span></div>
+    <div class="photo-wrap">
+      <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQQVaUR8I3yXR5f-x1A9KPEhAfp3iGncKCN8bnTDgib0LvI">
+      <span class="id-stamp">ID-002</span>
+    </div>
+    <div class="name-row"><span class="name">オーロラ</span></div>
+    <div class="redact"></div>
+  </a>
+
+  <a href="suncomi.html" class="card c3">
+    <div class="tab"><span>FILE 003</span><span>ACTIVE</span></div>
+    <div class="photo-wrap">
+      <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQSLH1HVCMMbSo7miabH8qwyAatscYvh2UXKGCnIsBQxuqw">
+      <span class="id-stamp">ID-003</span>
+    </div>
+    <div class="name-row"><span class="name">サンコミ</span></div>
+    <div class="redact"></div>
+  </a>
+
+  <a href="dear.html" class="card c4">
+    <div class="tab"><span>FILE 004</span><span>ACTIVE</span></div>
+    <div class="photo-wrap">
+      <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQSDcIzXIwvvTJFXOMQ8LtlnAcgYtxOsqkoORx3otBJRojY">
+      <span class="id-stamp">ID-004</span>
+    </div>
+    <div class="name-row"><span class="name">ディア</span></div>
+    <div class="redact"></div>
+  </a>
+
+  <a href="nobunaga.html" class="card c5">
+    <div class="tab"><span>FILE 005</span><span>ACTIVE</span></div>
+    <div class="photo-wrap">
+      <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQSctUlKdoo8Qbp1O2kqCDE4AZs--H6jwFlWEYAYHtH5pco">
+      <span class="id-stamp">ID-005</span>
+    </div>
+    <div class="name-row"><span class="name">信長</span></div>
+    <div class="redact"></div>
+  </a>
+
+  <a href="furank.html" class="card c6">
+    <div class="tab"><span>FILE 006</span><span>ACTIVE</span></div>
+    <div class="photo-wrap">
+      <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQQtgJWhg4qGRIcfp5UDMmnFASQAC6GKJAcxTii4YSjnkxQ">
+      <span class="id-stamp">ID-006</span>
+    </div>
+    <div class="name-row"><span class="name">フランク</span></div>
+    <div class="redact"></div>
+  </a>
+
+  <a href="rinne.html" class="card c7">
+    <div class="tab"><span>FILE 007</span><span>ACTIVE</span></div>
+    <div class="photo-wrap">
+      <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQSq9hBo2BDCT5GYU4uzoI7VAZ0SHwrN49IDfzlbDCnqgC8">
+      <span class="id-stamp">ID-007</span>
+    </div>
+    <div class="name-row"><span class="name">リンネ</span></div>
+    <div class="redact"></div>
+  </a>
+
+  <a href="yama.html" class="card c8">
+    <div class="tab"><span>FILE 008</span><span>ACTIVE</span></div>
+    <div class="photo-wrap">
+      <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQTmZyNwEEATS5O7bGLcu2lMASuW9LG9r-Jow4dxRoHbZSk">
+      <span class="id-stamp">ID-008</span>
+    </div>
+    <div class="name-row"><span class="name">ヤマ</span></div>
+    <div class="redact"></div>
+  </a>
+
+  <a href="ura.html" class="card c9 back">
+    <div class="back-icon">▤</div>
+    <span>File<br>を見る</span>
+  </a>
 </div>
+
+<footer>PALMIA BRANCH INTERNAL SYSTEM — DO NOT DISTRIBUTE</footer>
 
 </body>
 </html>
+```

@@ -3,449 +3,447 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>職員詳細 - 信長</title>
-
 <style>
-body {
-    font-family: "Segoe UI", sans-serif;
-    background-color: #111;
-    color: #eee;
-    margin: 0;
-}
+  @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
 
-/* ヘッダー */
-.header {
-    background: #222;
-    padding: 15px;
-    text-align: center;
-    font-size: 20px;
-    border-bottom: 2px solid #444;
-}
+  :root{
+    --bg:#0b0c0e;
+    --panel:#141518;
+    --panel-edge:#232427;
+    --paper:#e9e2cf;
+    --ink:#3d3fc9;
+    --text:#eae6da;
+    --text-dim:#8b8d86;
+    --mono:'Special Elite', 'Courier New', monospace;
+    --sans:'Zen Kaku Gothic New', sans-serif;
+  }
 
-/* メイン */
-.container {
-    display: flex;
-    flex-direction: column;
-    padding: 30px;
-    gap: 20px;
-}
+  *{ box-sizing:border-box; }
 
-/* 上段 */
-.top-section {
+  body {
+    margin:0;
+    background: radial-gradient(ellipse at 50% -10%, #1a1c1f 0%, var(--bg) 55%);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height:100vh;
+    padding-bottom:60px;
+  }
+
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 24px;
+    border-bottom:1px solid var(--panel-edge);
+  }
+  .back {
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding: 8px 14px;
+    background: var(--panel);
+    border:1px solid var(--panel-edge);
+    color: var(--text-dim);
+    text-decoration:none;
+    font-family: var(--mono);
+    font-size:12px;
+    letter-spacing:1px;
+    border-radius:2px;
+    transition: color .2s, border-color .2s;
+  }
+  .back:hover{ color: var(--text); border-color: var(--ink); }
+  .file-tag{
+    font-family: var(--mono);
+    font-size:12px;
+    letter-spacing:3px;
+    color: var(--ink);
+  }
+  .file-tag::before{ content:"■ "; }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 36px 24px 10px;
+  }
+
+  .top-section {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
-}
+    gap: 32px;
+    background: var(--panel);
+    border:1px solid var(--panel-edge);
+    border-radius:3px;
+    overflow:hidden;
+  }
 
-/* 左 */
-.left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+  .left {
+    flex: 0 0 260px;
+    position:relative;
+  }
+  .photo-wrap{
+    position:relative;
+    width:100%;
+    aspect-ratio: 3 / 3.6;
+    overflow:hidden;
+  }
+  .photo-wrap img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .photo-wrap::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,.6) 100%);
+  }
+  .id-stamp{
+    position:absolute;
+    bottom:10px; left:10px;
+    font-family: var(--mono);
+    font-size:11px;
+    letter-spacing:1px;
+    color: var(--paper);
+    z-index:1;
+  }
 
-/* 画像 */
-.profile-img {
-    width: 250px;
-    height: 300px;
-}
+  .info {
+    flex: 1 1 320px;
+    padding: 24px 24px 24px 0;
+    min-width:260px;
+  }
+  .name {
+    font-family: var(--mono);
+    font-size: 30px;
+    letter-spacing:2px;
+    border-bottom: 1px solid var(--panel-edge);
+    padding-bottom: 10px;
+    margin: 20px 0 16px;
+  }
 
-/* 右 */
-.info {
-    display: flex;
-    flex-direction: column;
-}
+  .profile p {
+    margin: 7px 0;
+    font-size:14px;
+    display:flex;
+    gap:10px;
+  }
+  .profile p span.label{
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size:11px;
+    letter-spacing:1px;
+    min-width:70px;
+    padding-top:2px;
+  }
 
-/* 名前 */
-.name {
-    font-size: 32px;
-    border-bottom: 1px solid #555;
-    padding-bottom: 5px;
-    margin-bottom: 15px;
-}
-
-/* プロフィール */
-.profile p {
-    margin: 5px 0;
-}
-
-/* 区切り */
-.divider {
+  .divider {
     border: none;
-    border-top: 1px solid #555;
-    margin: 10px 0;
-}
+    border-top: 1px solid var(--panel-edge);
+    margin: 14px 0;
+  }
 
-/* トラウマ */
-.trauma {
-    font-size: 16px;
-    color: #FF0010;
-    margin-top: 10px;
-}
+  .trauma {
+    font-size: 13px;
+    color: #EC0000;
+    font-family: var(--mono);
+    letter-spacing:1px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .trauma .mark{ animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink{ 50%{ opacity:0; } }
 
-/* 紹介 */
-.intro-section {
-    max-width: 800px;
-}
+  .section{
+    margin-top:26px;
+    background: var(--panel);
+    border:1px solid var(--panel-edge);
+    border-radius:3px;
+    overflow:hidden;
+  }
+  .section-tab{
+    padding:9px 16px;
+    background: var(--ink);
+    font-family: var(--mono);
+    font-size:11px;
+    letter-spacing:2px;
+    color:#0b0c0e;
+    font-weight:700;
+  }
+  .section-body{
+    padding:20px 22px 24px;
+  }
 
-.intro-title {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #14157E;
-}
-
-.intro {
-    font-size: 16px;
-    line-height: 1.5;
-    text-align: left;
-}
-
-/* 記録 */
-.record-title {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #ffffff;
-}
-
-.record-text {
-    font-size: 16px;
-    line-height: 1.5;
-    text-align: left;
-    color: #ffffff;
-    margin-bottom: 25px;
-}
-
-/* 戻る */
-.back {
-    display: inline-block;
-    margin: 15px;
-    padding: 10px 15px;
-    background: #444;
-    color: white;
-    text-decoration: none;
-}
-
-.back:hover {
-    background: #666;
-}
-
-/* セリフ一覧 */
-.profile-box{
-    width:360px;
-    border:2px solid white;
-    background:#1a1a1a;
-    box-shadow:0 0 20px rgba(255,255,255,0.1);
-    margin-top:30px;
-}
-
-.item{
-    border-bottom:2px solid white;
-}
-
-.toggle{
-    padding:16px;
+  .record-tab{
+    display:flex;
+    align-items:center;
+    gap:8px;
     cursor:pointer;
-    background:#1a1a1a;
-    transition:0.3s;
-    font-size:18px;
     user-select:none;
-}
-
-.toggle:hover{
-    background:#2a2a2a;
-}
-
-.content{
+  }
+  .record-tab::before{
+    content:"▸";
+    transition: transform .25s ease;
+    display:inline-block;
+  }
+  .record.active .record-tab::before{ transform: rotate(90deg); }
+  .record-body{
     max-height:0;
     overflow:hidden;
-    background:#2b2b2b;
+    transition: max-height .4s ease;
+  }
+  .record.active .record-body{
+    max-height:600px;
+  }
+  .intro {
+    font-size: 15px;
+    line-height: 1.85;
+    white-space: pre-line;
+  }
+  .intro .quote{
+    margin-top:18px;
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size:14px;
+  }
+  .record-text {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+  .record-text + .record-text{ margin-top:0; }
+
+  .profile-box{
+    border:none;
+    background:transparent;
+    box-shadow:none;
+    margin-top:0;
+  }
+  .item{
+    border-bottom:1px solid var(--panel-edge);
+  }
+  .item:last-child{ border-bottom:none; }
+
+  .toggle{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 22px;
+    cursor:pointer;
+    background:var(--panel);
+    transition:background .2s;
+    font-size:14px;
+    font-family: var(--mono);
+    letter-spacing:.5px;
+    user-select:none;
+  }
+  .toggle::before{
+    content:"▸";
+    color: var(--ink);
+    transition: transform .25s ease;
+    display:inline-block;
+  }
+  .item.active .toggle::before{ transform: rotate(90deg); }
+  .toggle:hover{ background:#1c1d20; }
+
+  .content{
+    max-height:0;
+    overflow:hidden;
+    background:#101113;
     transition:max-height 0.4s ease;
-}
-
-.item.active .content{
+  }
+  .item.active .content{
     max-height:200px;
-}
-
-.content p{
+  }
+  .content p{
     margin:0;
-    padding:16px;
+    padding:6px 22px 18px 42px;
     line-height:1.7;
-    color:#dddddd;
-}
+    color: var(--text-dim);
+    font-size:14px;
+  }
 
-/* スマホ */
-@media (max-width: 600px) {
+  footer{
+    text-align:center;
+    margin-top:40px;
+    font-family: var(--mono);
+    font-size:11px;
+    color: var(--text-dim);
+    letter-spacing:1px;
+  }
 
-    .top-section {
-        flex-direction: column;
-        align-items: center;
-    }
+  @media (max-width: 640px) {
+    .top-section{ flex-direction:column; }
+    .left{ flex:none; }
+    .photo-wrap{ aspect-ratio: 4/3; }
+    .info{ padding: 4px 20px 24px; }
+    .name{ font-size:24px; }
+  }
 
-    .profile-img {
-        width: 80%;
-        height: auto;
-        margin-bottom: 15px;
-    }
-
-    .name {
-        font-size: 24px;
-    }
-
-    .intro-section {
-        max-width: 90%;
-        text-align: center;
-    }
-
-    .profile-box{
-        width:100%;
-    }
-}
+  @media (prefers-reduced-motion: reduce){
+    .trauma .mark{ animation:none; }
+    .content{ transition:none; }
+  }
 </style>
 </head>
-
 <body>
 
-<div class="header">
-    職員詳細データ
+<div class="topbar">
+  <a href="index.html" class="back">← 一覧に戻る</a>
+  <span class="file-tag">FILE 005 / CONFIDENTIAL</span>
 </div>
-
-<a href="index.html" class="back">← 一覧に戻る</a>
 
 <div class="container">
 
-    <!-- 上段 -->
-    <div class="top-section">
+  <div class="top-section">
+    <div class="left">
+      <div class="photo-wrap">
+        <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQSWxY11rU4MTbJu31K5ZIB8ATqqY32quvsQj7B4KnKlbmY?width=583&height=499" alt="信長">
+        <span class="id-stamp">ID-005 / NOBUNAGA</span>
+      </div>
+    </div>
 
-        <!-- 左 -->
-        <div class="left">
-            <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQSWxY11rU4MTbJu31K5ZIB8ATqqY32quvsQj7B4KnKlbmY?width=583&height=499" width="583" height="499"
-alt="画像"
-    style="width:80%; height:auto; display:block; margin:0 auto;" />
+    <div class="info">
+      <div class="name">信長</div>
+
+      <div class="profile">
+        <p><span class="label">身長</span>180cm</p>
+        <p><span class="label">年齢</span>28歳</p>
+        <p><span class="label">出身区</span>??</p>
+        <p><span class="label">性別</span>男</p>
+
+        <hr class="divider">
+
+        <p><span class="label">所属部門</span>中央本部</p>
+        <p><span class="label">装備E.G.O</span>ミミック</p>
+
+        <hr class="divider">
+
+        <div class="trauma">
+          <span class="mark">■</span>トラウマ：自分の存在が忘れられること
         </div>
-
-        <!-- 右 -->
-        <div class="info">
-
-            <div class="name">信長</div>
-
-            <div class="profile">
-                <p>身長：180cm</p>
-                <p>年齢：28歳</p>
-                <p>出身区：??</p>
-                <p>性別：男</p>
-
-                <hr class="divider">
-
-                <p>所属部門：中央本部</p>
-
-                <p>装備E.G.O：ミミック</p>
-
-                <hr class="divider">
-
-                <div class="trauma">
-                    <strong>トラウマ：</strong>自分の存在が忘れられること
-                </div>
-
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- 自己紹介 -->
-    <div class="intro-section">
+  <div class="section">
+    <div class="section-tab">自己紹介</div>
+    <div class="section-body">
+      <div class="intro">中央部門職員。
 
-        <div class="intro-title">
-            自己紹介
-        </div>
+元薬指で、
+自分が作りたい物を作る為なら
+何でもする狂人。
 
-        <div class="intro">
-            中央部門職員。
-
-            元薬指で、
-            自分が作りたい物を作る為なら
-            何でもする狂人。
-
-            幻想体の一部を剥ぎ取って
-            作品作るのがデフォで、
-            かなりの頻度でブチギレた幻想体に
-            追われているが、
-            本人は鎮圧する気は全く無く、
-            誰かに押し付ける前提で行動してるので
-            中央の職員達は
-            いつも彼の巻き添えをくらっている。
-
-            <br><br>
-
-            「やぁ、僕は芸術家信長さ。よければ僕の作品見ていかないかい？」
-        </div>
+幻想体の一部を剥ぎ取って
+作品作るのがデフォで、
+かなりの頻度でブチギレた幻想体に
+追われているが、
+本人は鎮圧する気は全く無く、
+誰かに押し付ける前提で行動してるので
+中央の職員達は
+いつも彼の巻き添えをくらっている。<div class="quote">「やぁ、僕は芸術家信長さ。よければ僕の作品見ていかないかい？」</div></div>
     </div>
+  </div>
 
-    <!-- 記録1 -->
-    <div class="record-title">
-        記録1
+  <div class="section record">
+    <div class="section-tab record-tab" onclick="toggleItem(this)">記録 01</div>
+    <div class="section-body record-body">
+      <div class="record-text">アリサと1、2を争うレベルの実力を有しているが、
+本人には出世欲が微塵もないため
+中央職員の１人として在籍している。
+
+（失楽園装備のオーロラに勝てる噂がある）
+
+O-06-20 に似たようなナイフを生成でき、
+疑似goodbyeができるなど
+非常に強力な技を有してはいるが、
+心身共に消耗が激しく
+浸蝕する危険性が極めて高いため、
+O-06-20 のように連発は出来ない。</div>
     </div>
+  </div>
 
-    <div class="record-text">
-        アリサと1、2を争うレベルの実力を有しているが、
-        本人には出世欲が微塵もないため
-        中央職員の１人として在籍している。
-
-        （失楽園装備のオーロラに勝てる噂がある）
-
-        O-06-20 に似たようなナイフを生成でき、
-        疑似goodbyeができるなど
-        非常に強力な技を有してはいるが、
-        心身共に消耗が激しく
-        浸蝕する危険性が極めて高いため、
-        O-06-20 のように連発は出来ない。
-    </div>
-
-    <!-- 記録2 -->
-    <div class="record-title">
-        記録2
-    </div>
-
-    <div class="record-text">
-        戦闘面では支部内でトップクラスの強さを誇る。
-<br>
+  <div class="section record">
+    <div class="section-tab record-tab" onclick="toggleItem(this)">記録 02</div>
+    <div class="section-body record-body">
+      <div class="record-text">戦闘面では支部内でトップクラスの強さを誇る。
+<br><br>
 ランクV職員複数人相手しても平気な程度には体力・精神力がタフであり、中央本部のチーフ代理任されたりと(相対的に)頼れる部類の職員である。
-<br>
+<br><br>
 だが芸術になると話は変わり、作品の為なら手段を選ばないとんでもない男に豹変するのである。
-<br>
+<br><br>
 事例その１　大鳥の羽むしり取りキレさせチェイス発生
 <br>
 事例その２　オフィサー１か所に集めマッチガール誘導による大爆殺を撮影
 <br>
 事例その３　笑顔を勝手に装備して好き勝手してディアと一悶着+浸蝕発生etc...
-<br>
-数え始めたらキリがないレベルで体を張って材料とインスピレーションを得ようとするその姿勢だけは一周回って見習うべきなのかもしれない。
+<br><br>
+数え始めたらキリがないレベルで体を張って材料とインスピレーションを得ようとするその姿勢だけは一周回って見習うべきなのかもしれない。</div>
     </div>
+  </div>
 
-    <!-- セリフ一覧 -->
+  <div class="section">
+    <div class="section-tab">セリフログ</div>
     <div class="profile-box">
 
-        <!-- サンプル1 -->
-        <div class="item">
-            <div class="toggle" onclick="toggleItem(this)">
-                ▶ 初めまして
-            </div>
-
-            <div class="content">
-                <p>
-                    「初めまして僕は信長 何処にでもいる芸術家さ。暇なら僕のアトリエに来るといい、退屈はさせないよ。」
-                </p>
-            </div>
+      <div class="item">
+        <div class="toggle" onclick="toggleItem(this)">初めまして</div>
+        <div class="content">
+          <p>「初めまして僕は信長 何処にでもいる芸術家さ。暇なら僕のアトリエに来るといい、退屈はさせないよ。」</p>
         </div>
+      </div>
 
-        <!-- サンプル2 -->
-        <div class="item">
-            <div class="toggle" onclick="toggleItem(this)">
-                ▶ 世間話１
-            </div>
-
-            <div class="content">
-                <p>
-                    「千..二千...ちょっと今月...ヤバいかもね.....」
-                </p>
-            </div>
+      <div class="item">
+        <div class="toggle" onclick="toggleItem(this)">世間話１</div>
+        <div class="content">
+          <p>「千..二千...ちょっと今月...ヤバいかもね.....」</p>
         </div>
+      </div>
 
-        <!-- サンプル3 -->
-        <div class="item">
-            <div class="toggle" onclick="toggleItem(this)">
-                ▶ 世間話２
-            </div>
-
-            <div class="content">
-                <p>
-                    「はい、これあげるよ。中身は何かって?......まぁ悪いものは入ってないとだけ言えるね.....♪」
-                </p>
-            </div>
+      <div class="item">
+        <div class="toggle" onclick="toggleItem(this)">世間話２</div>
+        <div class="content">
+          <p>「はい、これあげるよ。中身は何かって?......まぁ悪いものは入ってないとだけ言えるね.....♪」</p>
         </div>
+      </div>
 
-        <!-- サンプル4 -->
-        <div class="item">
-            <div class="toggle" onclick="toggleItem(this)">
-                ▶ 好きなこと
-            </div>
+      <div class="item">
+        <div class="toggle" onclick="toggleItem(this)">好きなこと</div>
+        <div class="content"><p>「サンプル」</p></div>
+      </div>
 
-            <div class="content">
-                <p>
-                    「サンプル」
-                </p>
-            </div>
-        </div>
+      <div class="item">
+        <div class="toggle" onclick="toggleItem(this)">嫌いなこと</div>
+        <div class="content"><p>「サンプル」</p></div>
+      </div>
 
-        <!-- サンプル5 -->
-        <div class="item">
-            <div class="toggle" onclick="toggleItem(this)">
-                ▶ 嫌いなこと
-            </div>
+      <div class="item">
+        <div class="toggle" onclick="toggleItem(this)">egoについて</div>
+        <div class="content"><p>「サンプル」</p></div>
+      </div>
 
-            <div class="content">
-                <p>
-                    「サンプル」
-                </p>
-            </div>
-        </div>
+      <div class="item">
+        <div class="toggle" onclick="toggleItem(this)">幻想体について</div>
+        <div class="content"><p>「サンプル」</p></div>
+      </div>
 
-        <!-- サンプル6 -->
-        <div class="item">
-            <div class="toggle" onclick="toggleItem(this)">
-                ▶ egoについて
-            </div>
+      <div class="item">
+        <div class="toggle" onclick="toggleItem(this)">サンプル</div>
+        <div class="content"><p>「サンプル」</p></div>
+      </div>
 
-            <div class="content">
-                <p>
-                    「サンプル」
-                </p>
-            </div>
-        </div>
-
-        <!-- サンプル7 -->
-        <div class="item">
-            <div class="toggle" onclick="toggleItem(this)">
-                ▶ 幻想体について
-            </div>
-
-            <div class="content">
-                <p>
-                    「サンプル」
-                </p>
-            </div>
-        </div>
-
- <!-- サンプル8 -->
-        <div class="item">
-            <div class="toggle" onclick="toggleItem(this)">
-                ▶ サンプル
-            </div>
-
-            <div class="content">
-                <p>
-                    「サンプル」
-                </p>
-            </div>
-        </div>
-
-<!-- サンプル9 -->
-        <div class="item">
-            <div class="toggle" onclick="toggleItem(this)">
-                ▶ サンプル
-            </div>
-
-            <div class="content">
-                <p>
-                    「サンプル」
-                </p>
-            </div>
-        </div>
+      <div class="item">
+        <div class="toggle" onclick="toggleItem(this)">サンプル</div>
+        <div class="content"><p>「サンプル」</p></div>
+      </div>
 
     </div>
+  </div>
 
 </div>
+
+<footer>PALMIA BRANCH INTERNAL SYSTEM — DO NOT DISTRIBUTE</footer>
 
 <script>
 function toggleItem(element){
