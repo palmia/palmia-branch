@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>職員詳細 - ディア</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
@@ -90,12 +90,14 @@
   .photo-wrap img {
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit: contain; /* 変更箇所 */
     display:block;
+    background-color: black; /* 余白目立たせない用 */
   }
   .photo-wrap::after{
     content:"";
-    position:absolute; inset:0;
+    position:absolute;
+    inset:0;
     background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,.6) 100%);
   }
   .id-stamp{
@@ -298,7 +300,7 @@
   <div class="top-section">
     <div class="left">
       <div class="photo-wrap">
-        <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQTifuJtRLgVTLxvIhwCvLZ3AQ3H4ScNq6zRHBuWXe7yTIw?width=501&height=670" alt="ディア">
+        <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQTifuJtRLgVTLxvIhwCvLZ3AQ3H4ScNq6zRHBuWXe7yTIw?width=501&height=670" alt="ディア" />
         <span class="id-stamp">ID-004 / DEAR</span>
       </div>
     </div>
@@ -312,12 +314,12 @@
         <p><span class="label">出身区</span>D社</p>
         <p><span class="label">性別</span>男</p>
 
-        <hr class="divider">
+        <hr class="divider" />
 
         <p><span class="label">所属部門</span>福祉部門</p>
         <p><span class="label">装備E.G.O</span>笑顔</p>
 
-        <hr class="divider">
+        <hr class="divider" />
 
         <div class="trauma">
           <span class="mark">■</span>トラウマ：裏切られること
@@ -329,11 +331,13 @@
   <div class="section">
     <div class="section-tab">自己紹介</div>
     <div class="section-body">
-      <div class="intro">福祉部門チーフ。
-仕事での人運がかなり終わってる不憫枠。
-仕事は真面目にしていて安定してると思いきや、他所の職員達のせいで脱走と死者のオンパレード。
-社畜も真っ青な量の追加の仕事をやらされる日々で、当然定時に終わるはずも無く、ストレスで胃が悲鳴を上げている。
-<div class="quote">「どうもディアです。なんです...?これ以上何も話しませんよ.....」</div></div>
+      <div class="intro">
+        福祉部門チーフ。
+        仕事での人運がかなり終わってる不憫枠。
+        仕事は真面目にしていて安定してると思いきや、他所の職員達のせいで脱走と死者のオンパレード。
+        社畜も真っ青な量の追加の仕事をやらされる日々で、当然定時に終わるはずも無く、ストレスで胃が悲鳴を上げている。
+        <div class="quote">「どうもディアです。なんです...?これ以上何も話しませんよ.....」</div>
+      </div>
     </div>
   </div>
 
@@ -341,27 +345,29 @@
     <div class="section-tab record-tab" onclick="toggleItem(this)">記録 01</div>
     <div class="section-body record-body">
       <div class="record-text">全てにおいて平凡、
-目立った特技もない本当にシンプルな男である。(当社比)
-<br>
-最初は何ともなかったが、時間が経つごとに異常行動をとるようになっていき、遂には正常な職員を殺して死肉を貪り喰らい始める。
-<br>
-この症状はどうやっても治まらず本人の自制も効かない為、処分も検討されたがこの時人手不足で安易に出来ず、安定した頃には既にチーフに昇格済で結局何も出来ず今に至る。
-</div>
+        目立った特技もない本当にシンプルな男である。(当社比)
+        <br />
+        最初は何ともなかったが、時間が経つごとに異常行動をとるようになっていき、遂には正常な職員を殺して死肉を貪り喰らい始める。
+        <br />
+        この症状はどうやっても治まらず本人の自制も効かない為、処分も検討されたがこの時人手不足で安易に出来ず、安定した頃には既にチーフに昇格済で結局何も出来ず今に至る。
+      </div>
     </div>
   </div>
 
   <div class="section record">
     <div class="section-tab record-tab" onclick="toggleItem(this)">記録 02</div>
     <div class="section-body record-body">
-      <div class="record-text">目つきが悪いせいで怖い人と思われがちだが、温厚で優しい人でもある。(一部除く)
-<br>
-”何処にでもいる普通の人“とディアは言うがこれはガチの過小評価であり、普通の定義を問い詰めたくなる程度には普通とは言えない男である。
-<br>
-まずほぼ初日から五体満足で生存出来てる、チーフに就任している、Alephのego装備できる適応能力、鎮圧スピードが教育と同率2位、身体能力テストで総合4位(3位はリンネ)etc..
-<br>
-...........察しのいい人は気付くだろう、この男が普通では済まされない職員だという事に。
-<br>
-同期達のせいで相対的に普通になっているだけで、全体的に見ればこの上ない優秀な職員である。</div>
+      <div class="record-text">
+        目つきが悪いせいで怖い人と思われがちだが、温厚で優しい人でもある。(一部除く)
+        <br />
+        ”何処にでもいる普通の人“とディアは言うがこれはガチの過小評価であり、普通の定義を問い詰めたくなる程度には普通とは言えない男である。
+        <br />
+        まずほぼ初日から五体満足で生存出来てる、チーフに就任している、Alephのego装備できる適応能力、鎮圧スピードが教育と同率2位、身体能力テストで総合4位(3位はリンネ)etc..
+        <br />
+        ...........察しのいい人は気付くだろう、この男が普通では済まされない職員だという事に。
+        <br />
+        同期達のせいで相対的に普通になっているだけで、全体的に見ればこの上ない優秀な職員である。
+      </div>
     </div>
   </div>
 
@@ -379,7 +385,7 @@
       <div class="item">
         <div class="toggle" onclick="toggleItem(this)">世間話１</div>
         <div class="content">
-          <p>「その書類は中央に、それは奥で申請を、egoは..ﾊｧﾏﾀﾃﾞｽｶ,,,,懲戒に持っていってください....」</p>
+          <p>「その書類は中央に、それは奥で申請を、egoは..ﾊｧﾏﾀﾞﾃﾞｽｶ,,,,懲戒に持っていってください....」</p>
         </div>
       </div>
 
@@ -406,7 +412,9 @@
 
       <div class="item">
         <div class="toggle" onclick="toggleItem(this)">egoについて</div>
-        <div class="content"><p>「見た目より重くないですねこれ。」</p></div>
+        <div class="content">
+          <p>「見た目より重くないですねこれ。」</p>
+        </div>
       </div>
 
       <div class="item">

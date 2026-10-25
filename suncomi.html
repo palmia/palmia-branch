@@ -90,8 +90,9 @@
   .photo-wrap img {
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit: contain; /* 変更箇所 */
     display:block;
+    background-color: black; /* 余白が目立たないよう背景追加 */
   }
   .photo-wrap::after{
     content:"";

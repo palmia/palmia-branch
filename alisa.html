@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>職員詳細 - アリサ</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
 
-  :root{
+  :root {
     --bg:#0b0c0e;
     --panel:#141518;
     --panel-edge:#232427;
@@ -19,7 +19,9 @@
     --sans:'Zen Kaku Gothic New', sans-serif;
   }
 
-  *{ box-sizing:border-box; }
+  * {
+    box-sizing: border-box;
+  }
 
   body {
     margin:0;
@@ -30,7 +32,7 @@
     padding-bottom:60px;
   }
 
-  .topbar{
+  .topbar {
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -41,7 +43,7 @@
     display:inline-flex;
     align-items:center;
     gap:6px;
-    padding: 8px 14px;
+    padding:8px 14px;
     background: var(--panel);
     border:1px solid var(--panel-edge);
     color: var(--text-dim);
@@ -52,25 +54,30 @@
     border-radius:2px;
     transition: color .2s, border-color .2s;
   }
-  .back:hover{ color: var(--text); border-color: var(--ink); }
-  .file-tag{
+  .back:hover {
+    color: var(--text);
+    border-color: var(--ink);
+  }
+  .file-tag {
     font-family: var(--mono);
     font-size:12px;
     letter-spacing:3px;
     color: var(--ink);
   }
-  .file-tag::before{ content:"■ "; }
+  .file-tag::before {
+    content:"■ ";
+  }
 
   .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 36px 24px 10px;
+    max-width:900px;
+    margin:0 auto;
+    padding:36px 24px 10px;
   }
 
   .top-section {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 32px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:32px;
     background: var(--panel);
     border:1px solid var(--panel-edge);
     border-radius:3px;
@@ -79,44 +86,47 @@
 
   .left {
     flex: 0 0 260px;
-    position:relative;
+    position: relative;
   }
-  .photo-wrap{
-    position:relative;
-    width:100%;
+  .photo-wrap {
+    position: relative;
+    width: 100%;
     aspect-ratio: 3 / 3.6;
-    overflow:hidden;
+    overflow: hidden;
   }
   .photo-wrap img {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* cover から contain に変更 */
+    display: block;
+    background-color: black; /* 余白が目立たないように背景色を追加 */
   }
-  .photo-wrap::after{
-    content:"";
-    position:absolute; inset:0;
+  .photo-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
     background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,.6) 100%);
   }
-  .id-stamp{
-    position:absolute;
-    bottom:10px; left:10px;
+  .id-stamp {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
     font-family: var(--mono);
-    font-size:11px;
-    letter-spacing:1px;
+    font-size: 11px;
+    letter-spacing: 1px;
     color: var(--paper);
-    z-index:1;
+    z-index: 1;
   }
 
   .info {
     flex: 1 1 320px;
     padding: 24px 24px 24px 0;
-    min-width:260px;
+    min-width: 260px;
   }
   .name {
     font-family: var(--mono);
     font-size: 30px;
-    letter-spacing:2px;
+    letter-spacing: 2px;
     border-bottom: 1px solid var(--panel-edge);
     padding-bottom: 10px;
     margin: 20px 0 16px;
@@ -124,17 +134,17 @@
 
   .profile p {
     margin: 7px 0;
-    font-size:14px;
-    display:flex;
-    gap:10px;
+    font-size: 14px;
+    display: flex;
+    gap: 10px;
   }
-  .profile p span.label{
+  .profile p span.label {
     color: var(--text-dim);
     font-family: var(--mono);
-    font-size:11px;
-    letter-spacing:1px;
-    min-width:70px;
-    padding-top:2px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    min-width: 70px;
+    padding-top: 2px;
   }
 
   .divider {
@@ -147,144 +157,170 @@
     font-size: 13px;
     color: #EC0000;
     font-family: var(--mono);
-    letter-spacing:1px;
-    display:flex;
-    align-items:center;
-    gap:8px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
-  .trauma .mark{ animation: blink 1.1s steps(1) infinite; }
-  @keyframes blink{ 50%{ opacity:0; } }
+  .trauma .mark {
+    animation: blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
 
-  .section{
-    margin-top:26px;
+  .section {
+    margin-top: 26px;
     background: var(--panel);
-    border:1px solid var(--panel-edge);
-    border-radius:3px;
-    overflow:hidden;
+    border: 1px solid var(--panel-edge);
+    border-radius: 3px;
+    overflow: hidden;
   }
-  .section-tab{
-    padding:9px 16px;
+  .section-tab {
+    padding: 9px 16px;
     background: var(--ink);
     font-family: var(--mono);
-    font-size:11px;
-    letter-spacing:2px;
-    color:#0b0c0e;
-    font-weight:700;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #0b0c0e;
+    font-weight: 700;
   }
-  .section-body{
-    padding:20px 22px 24px;
+  .section-body {
+    padding: 20px 22px 24px;
   }
 
-  /* ---------- 記録トグル ---------- */
-  .record-tab{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    cursor:pointer;
-    user-select:none;
+  .record-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
   }
-  .record-tab::before{
-    content:"▸";
+  .record-tab::before {
+    content: "▸";
     transition: transform .25s ease;
-    display:inline-block;
+    display: inline-block;
   }
-  .record.active .record-tab::before{ transform: rotate(90deg); }
-  .record-body{
-    max-height:0;
-    overflow:hidden;
+  .record.active .record-tab::before {
+    transform: rotate(90deg);
+  }
+  .record-body {
+    max-height: 0;
+    overflow: hidden;
     transition: max-height .4s ease;
   }
-  .record.active .record-body{
-    max-height:600px;
+  .record.active .record-body {
+    max-height: 600px;
   }
   .intro {
     font-size: 15px;
     line-height: 1.85;
     white-space: pre-line;
   }
-  .intro .quote{
-    margin-top:18px;
+  .intro .quote {
+    margin-top: 18px;
     color: var(--ink);
     font-family: var(--mono);
-    font-size:14px;
+    font-size: 14px;
   }
   .record-text {
     font-size: 15px;
     line-height: 1.85;
   }
-  .record-text + .record-text{ margin-top:0; }
-
-  /* ---------- セリフ一覧 ---------- */
-  .profile-box{
-    border:none;
-    background:transparent;
-    box-shadow:none;
-    margin-top:0;
+  .record-text + .record-text {
+    margin-top: 0;
   }
-  .item{
-    border-bottom:1px solid var(--panel-edge);
-  }
-  .item:last-child{ border-bottom:none; }
 
-  .toggle{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:14px 22px;
-    cursor:pointer;
-    background:var(--panel);
-    transition:background .2s;
-    font-size:14px;
+  .profile-box {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    margin-top: 0;
+  }
+  .item {
+    border-bottom: 1px solid var(--panel-edge);
+  }
+  .item:last-child {
+    border-bottom: none;
+  }
+
+  .toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    cursor: pointer;
+    background: var(--panel);
+    transition: background .2s;
+    font-size: 14px;
     font-family: var(--mono);
-    letter-spacing:.5px;
-    user-select:none;
+    letter-spacing: .5px;
+    user-select: none;
   }
-  .toggle::before{
-    content:"▸";
+  .toggle::before {
+    content: "▸";
     color: var(--ink);
     transition: transform .25s ease;
-    display:inline-block;
+    display: inline-block;
   }
-  .item.active .toggle::before{ transform: rotate(90deg); }
-  .toggle:hover{ background:#1c1d20; }
+  .item.active .toggle::before {
+    transform: rotate(90deg);
+  }
+  .toggle:hover {
+    background: #1c1d20;
+  }
 
-  .content{
-    max-height:0;
-    overflow:hidden;
-    background:#101113;
-    transition:max-height 0.4s ease;
+  .content {
+    max-height: 0;
+    overflow: hidden;
+    background: #101113;
+    transition: max-height 0.4s ease;
   }
-  .item.active .content{
-    max-height:200px;
+  .item.active .content {
+    max-height: 200px;
   }
-  .content p{
-    margin:0;
-    padding:6px 22px 18px 42px;
-    line-height:1.7;
+  .content p {
+    margin: 0;
+    padding: 6px 22px 18px 42px;
+    line-height: 1.7;
     color: var(--text-dim);
-    font-size:14px;
+    font-size: 14px;
   }
 
-  footer{
-    text-align:center;
-    margin-top:40px;
+  footer {
+    text-align: center;
+    margin-top: 40px;
     font-family: var(--mono);
-    font-size:11px;
+    font-size: 11px;
     color: var(--text-dim);
-    letter-spacing:1px;
+    letter-spacing: 1px;
   }
 
   @media (max-width: 640px) {
-    .top-section{ flex-direction:column; }
-    .left{ flex:none; }
-    .photo-wrap{ aspect-ratio: 4/3; }
-    .info{ padding: 4px 20px 24px; }
-    .name{ font-size:24px; }
+    .top-section {
+      flex-direction: column;
+    }
+    .left {
+      flex: none;
+    }
+    .photo-wrap {
+      aspect-ratio: 4 / 3;
+    }
+    .info {
+      padding: 4px 20px 24px;
+    }
+    .name {
+      font-size: 24px;
+    }
   }
 
-  @media (prefers-reduced-motion: reduce){
-    .trauma .mark{ animation:none; }
-    .content{ transition:none; }
+  @media (prefers-reduced-motion: reduce) {
+    .trauma .mark {
+      animation: none;
+    }
+    .content {
+      transition: none;
+    }
   }
 </style>
 </head>
@@ -300,7 +336,7 @@
   <div class="top-section">
     <div class="left">
       <div class="photo-wrap">
-        <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQTZAmB2E5oSQrcaFPLJMKnNAd4fg1iGleWtyz2ZIp3-9TQ?width=500&height=669" alt="アリサ">
+        <img src="https://1drv.ms/i/c/b4573ffa5818ceb2/IQTZAmB2E5oSQrcaFPLJMKnNAd4fg1iGleWtyz2ZIp3-9TQ?width=500&height=669" alt="アリサ" />
         <span class="id-stamp">ID-001 / ALISA</span>
       </div>
     </div>
@@ -314,12 +350,12 @@
         <p><span class="label">出身区</span>W社</p>
         <p><span class="label">性別</span>女</p>
 
-        <hr class="divider">
+        <hr class="divider" />
 
         <p><span class="label">所属部門</span>教育部門</p>
         <p><span class="label">装備E.G.O</span>ジャスティティア</p>
 
-        <hr class="divider">
+        <hr class="divider" />
 
         <div class="trauma">
           <span class="mark">■</span>トラウマ：怒声
@@ -331,33 +367,37 @@
   <div class="section">
     <div class="section-tab">自己紹介</div>
     <div class="section-body">
-      <div class="intro">教育部門チーフ。自分から話すことはほぼ無く近寄りがたい雰囲気を出しているが、蓋を開ければ定期的に高級菓子を配って職員達をビビらせたり、後輩の手助けをしたりなど支部内でも屈指の優しいひとである。
-男女共にモテるが、本人はそっち系には疎すぎるせいでモテていることすら知らないのである。
-<div class="quote">「アリサです...えっと....その...よろしく....」</div></div>
+      <div class="intro">
+        教育部門チーフ。自分から話すことはほぼ無く近寄りがたい雰囲気を出しているが、蓋を開ければ定期的に高級菓子を配って職員達をビビらせたり、後輩の手助けをしたりなど支部内でも屈指の優しいひとである。男女共にモテるが、本人はそっち系には疎すぎるせいでモテていることすら知らないのである。
+        <div class="quote">「アリサです...えっと....その...よろしく....」</div>
+      </div>
     </div>
   </div>
 
   <div class="section record">
     <div class="section-tab record-tab" onclick="toggleItem(this)">記録 01</div>
     <div class="section-body record-body">
-      <div class="record-text">彼女は支部内で随一の戦闘能力を有しており、素の力で多少の幻想体とやりあえる程度の力がある。
-自制が極端に低く、ジャスティティアの装備者に選ばれた際、制御が出来ず必要以上に体力消費したり、同室内にいる職員達を巻き込んで絞首刑にしたりと扱えるまでに大量の死者を出している。
-</div>
+      <div class="record-text">
+        彼女は支部内で随一の戦闘能力を有しており、素の力で多少の幻想体とやりあえる程度の力がある。
+        自制が極端に低く、ジャスティティアの装備者に選ばれた際、制御が出来ず必要以上に体力消費したり、同室内にいる職員達を巻き込んで絞首刑にしたりと扱えるまでに大量の死者を出している。
+      </div>
     </div>
   </div>
 
   <div class="section record">
     <div class="section-tab record-tab" onclick="toggleItem(this)">記録 02</div>
     <div class="section-body record-body">
-      <div class="record-text">アリサは背が高く、顔つきが凛々しいからか男と間違えられる事もしばしある。あと本人があまりにも喋らないせいで声聞くまで判断出来ない職員もいる。
-<br>
-何処と無くふわふわしており、かなりの頻度でお高めのお菓子をあげたりしている為財布と命の両方を心配されているチーフでもある。
-<br><br>
-アリサは優秀ではあるが理由も無く色んな部門をフラつき歩く癖があるせいで鎮圧に遅れる事も。
-<br>
-喧嘩の仲裁は大の苦手であり助言も何もできずオロオロすることしかできないので人間関係のトラブルは別の職員が担当している。(リンネとディアの喧嘩は別)
-<br>
-作業に関しては愛着が一番酷くZAYINの愛着作業ですら半分しか溜まらないレベルで愛着作業ができない。</div>
+      <div class="record-text">
+        アリサは背が高く、顔つきが凛々しいからか男と間違えられる事もしばしある。あと本人があまりにも喋らないせいで声聞くまで判断出来ない職員もいる。
+        <br />
+        何処と無くふわふわしており、かなりの頻度でお高めのお菓子をあげたりしている為財布と命の両方を心配されているチーフでもある。
+        <br /><br />
+        アリサは優秀ではあるが理由も無く色んな部門をフラつき歩く癖があるせいで鎮圧に遅れる事も。
+        <br />
+        喧嘩の仲裁は大の苦手であり助言も何もできずオロオロすることしかできないので人間関係のトラブルは別の職員が担当している。(リンネとディアの喧嘩は別)
+        <br />
+        作業に関しては愛着が一番酷くZAYINの愛着作業ですら半分しか溜まらないレベルで愛着作業ができない。
+      </div>
     </div>
   </div>
 
@@ -409,17 +449,23 @@
 
       <div class="item">
         <div class="toggle" onclick="toggleItem(this)">幻想体について</div>
-        <div class="content"><p>「......変...な..生物.....?」</p></div>
+        <div class="content">
+          <p>「......変...な..生物.....?」</p>
+        </div>
       </div>
 
       <div class="item">
         <div class="toggle" onclick="toggleItem(this)">サンプル</div>
-        <div class="content"><p>「サンプル」</p></div>
+        <div class="content">
+          <p>「サンプル」</p>
+        </div>
       </div>
 
       <div class="item">
         <div class="toggle" onclick="toggleItem(this)">サンプル</div>
-        <div class="content"><p>「サンプル」</p></div>
+        <div class="content">
+          <p>「サンプル」</p>
+        </div>
       </div>
 
     </div>

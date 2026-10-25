@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>職員詳細 - フランク</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
@@ -90,8 +90,9 @@
   .photo-wrap img {
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit: contain; /* cover → contain に変更 */
     display:block;
+    background-color: black; /* 余白目立ち防止の背景色 */
   }
   .photo-wrap::after{
     content:"";
